@@ -1,0 +1,142 @@
+{
+  "users": [
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "": "f",
+      "id": "tDeG0KCmHqY"
+    },
+    {
+      "name": "Muhammed Sinan V",
+      "email": "thangan@gmail.com",
+      "password": "123456",
+      "id": "_uOF6TgYl4U"
+    }
+  ],
+  "games": [
+       {
+      "id": "1",
+      "title": "Cyberpunk 2077",
+      "price": 39.99,
+      "category": "RPG",
+      "platform": "PC",
+      "image": "https://i.pinimg.com/736x/e6/40/7f/e6407fc9aafc4166a24c7354e26bd956.jpg",
+      "description": "An open-world action RPG set in the futuristic Night City."
+    },
+    {
+      "id": "2",
+      "title": "Red Dead Redemption 2",
+      "price": 29.99,
+      "category": "Action",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/1200x/3a/72/09/3a72092b358d0d47b48b4da48ec9fcc6.jpg",
+        "https://i.pinimg.com/736x/4a/33/6a/4a336ab7a6f576fdd37150536e636f03.jpg",
+        "https://i.pinimg.com/736x/90/3b/0b/903b0b5e9a65173b514216e07a0bcf3e.jpg"
+      ],
+      "description": "An epic open-world western adventure following Arthur Morgan and the Van der Linde gang."
+    },
+    {
+      "id": "3",
+      "title": "Elden Ring",
+      "price": 49.99,
+      "category": "RPG",
+      "platform": "PC",
+      "image":[ 
+        "https://i.pinimg.com/736x/7c/02/15/7c0215275347ca42a7d208e3ae596b59.jpg",
+        "https://i.pinimg.com/736x/d4/63/f6/d463f6d6fdbe670ee0341a7704c2e7ff.jpg",
+        "https://i.pinimg.com/736x/06/1e/9f/061e9ffb4d44942b123597bb5b21f9ba.jpg" 
+      ],
+      "description": "An open-world action RPG set in a vast fantasy world filled with powerful enemies."
+    },
+    {
+      "id": "4",
+      "title": "God of War Ragnarök",
+      "price": 59.99,
+      "category": "Action",
+      "platform": "PC",
+      "image": "https://i.pinimg.com/1200x/92/97/c3/9297c3fcdfae3138596b65379496a6bc.jpg",
+      "description": "Kratos and Atreus face the forces of Ragnarök in a mythological adventure."
+    },
+    {
+      "id": "5",
+      "title": "Hogwarts Legacy",
+      "price": 44.99,
+      "category": "Adventure",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/9b/0e/13/9b0e13c69896b509b9d9d69719e61ed4.jpg",
+        ""
+      ],
+      "description": "Explore the wizarding world and experience life as a student at Hogwarts."
+    },
+    {
+      "id": "6",
+      "title": "Forza Horizon 5",
+      "price": 39.99,
+      "category": "Racing",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/12/e0/c9/12e0c9c80a81c3423132cb532283b2e9.jpg",
+        "https://i.pinimg.com/736x/73/8f/a1/738fa1904d11104dcf3501bb0a6f3469.jpg",
+        "https://i.pinimg.com/736x/48/52/cd/4852cd1aaa298d7641cd0860a77b0c06.jpg"
+    ],
+      "description": "Race across the vibrant landscapes of Mexico in an open-world driving experience."
+    },
+    {
+      "id": "7",
+      "title": "Resident Evil 4",
+      "price": 34.99,
+      "category": "Horror",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/4f/a8/ad/4fa8ad58915c26d99472903a517bb156.jpg",
+        "https://i.pinimg.com/736x/10/6e/58/106e58042c4364c5f55e2b8bb44b6c11.jpg",
+        "https://i.pinimg.com/1200x/d8/4d/5e/d84d5eba02df392a6b9bc5b663a0f37e.jpg"
+      ],
+      "description": "Survive a dangerous mission filled with enemies, mystery, and horror."
+    },
+    {
+      "id": "8",
+      "title": "Assassin's Creed Mirage",
+      "price": 32.99,
+      "category": "Action",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/3d/57/54/3d5754bea0eeb6af53f12d73e99a5723.jpg",
+        "https://i.pinimg.com/1200x/07/df/03/07df032b58a5b31ab63ecd8deefb82e0.jpg",
+        "https://i.pinimg.com/736x/35/24/81/352481b969d3c61f88dd4b79303e641d.jpg"
+      ],
+      "description": "Become a skilled assassin and explore the streets of ancient Baghdad."
+    },
+    {
+      "id": "9",
+      "title": "Marvel's Spider-Man ",
+      "price": 49.99,
+      "category": "Action",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/ea/1a/cf/ea1acf089cf5a74959cda5f5a9fb0af1.jpg",
+        "https://i.pinimg.com/736x/3c/1f/51/3c1f51015baaa7fd0c16ad086c7f20d4.jpg",
+        "https://i.pinimg.com/736x/2a/fc/8a/2afc8ab2c80da2af2bb36b48997f35f7.jpg"
+      ],
+      "description": "Swing through New York City and experience Peter Parker's superhero story."
+    },
+    {
+      "id": "10",
+      "title": "The Witcher 3",
+      "price": 29.99,
+      "category": "RPG",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/fe/6c/7c/fe6c7cde0fd19ad8b99bc3360fd14940.jpg",
+        "https://i.pinimg.com/736x/7b/ce/e2/7bcee2252a30c8cd546f81b92d7691f2.jpg",
+        "https://i.pinimg.com/736x/ed/85/f9/ed85f9ada14a4ada3e4725a6608d2ee0.jpg"
+      ],
+      "description": "Explore a massive fantasy world as Geralt of Rivia in this open-world RPG."
+    }
+  ],
+  "orders": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
