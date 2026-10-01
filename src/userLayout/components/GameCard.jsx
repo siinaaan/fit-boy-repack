@@ -5,7 +5,7 @@ function GameCard({game}) {
   return (
     <div>
         <Link to={`/games/${game.id}`}>
-        <img src={game.image} alt={game.title} 
+        <img src={game.image[0]} alt={game.title} 
         className='h-120 w-full object-cover'
         />
         </Link>

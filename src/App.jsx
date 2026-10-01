@@ -10,50 +10,26 @@ import GameDetails from "./userLayout/pages/GameDetails";
 
 function App() {
   return (
-    
     <Routes>
-
-      
       <Route path="/login" element={<Login />} />
 
       <Route path="/register" element={<Register />} />
 
-
-      
-      <Route
-        path="/"
-        element={
-          <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        element={
-          <ProtectedRoute>
-            <UserNav />
-          </ProtectedRoute>
-        }
-      ></Route>
-
-      <Route
-      path="/games"
-      element={
-        <ProtectedRoute>
-          <Games/>
-        </ProtectedRoute>
-      }>
+      <Route path="/" element={<Home />}>
+        <Route index element={<div>Home</div>} />
+        <Route path="games" element={<Games />} />
+        <Route path="/games/:id" element={<GameDetails />} />
       </Route>
 
-     <Route
-     path="/games/:id"
-     element={
-      <ProtectedRoute>
-        <GameDetails/>
-      </ProtectedRoute>
-     }/>
-  </Routes>
+      {/* <Route
+        path="/games/:id"
+        element={
+          <ProtectedRoute>
+            <GameDetails />
+          </ProtectedRoute>
+        }
+      /> */}
+    </Routes>
   );
 }
 

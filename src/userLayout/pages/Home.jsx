@@ -1,13 +1,15 @@
 import React from 'react'
-import UserNav from '../components/UserNav'
-
+import Navbar from '../components/Navbar'
+import { Outlet } from 'react-router-dom'
 
 function Home() {
   return (
     <div>
-      <UserNav/>
+      <Navbar/>
 
-      hhh
+      <main >
+        <Outlet/>
+      </main>
     </div>
   )
 }

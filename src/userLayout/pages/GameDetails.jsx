@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
 import { getGameById } from "../api/gameApi";
+import { X } from "lucide-react";
 
 function GameDetails() {
   const { id } = useParams();
-
+  const navigate = useNavigate()
   const {
     data: game,
     isLoading,
@@ -27,14 +28,19 @@ function GameDetails() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-900 p-6 text-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-2">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6 text-white">
+      <div className="relative grid max-h-[90vh] w-full max-w-6xl grid-cols-1 gap-8 overflow-y-auto scrollbar-none rounded-2xl bg-zinc-900 p-8 lg:grid-cols-2">
+        <button 
+        onClick={()=>navigate(-1)}
+        className="absolute right-5 top-5 z-50 cursor-pointer">
+          <X size={28} />
+        </button>
         <div>
           <div className="">
             <img
               src={game.image[selectedImage]}
               alt={game.title}
-              className="mt-6 h-150 max-w-full rounded-xl object-cover"
+              className="mt-6 h-120 w-80 rounded-xl object-cover"
             />
           </div>
 

@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../api/authApi";
+import { registerUser,getUsers } from "../api/authApi";
 import { Link } from "react-router-dom";
 
 function RegisterPage() {
@@ -12,19 +12,32 @@ function RegisterPage() {
     name: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
+  const [error, setError] = useState("")
+
   const registerMutation = useMutation({
-    mutationFn: registerUser,
+    mutationFn: async (userData) => {
+      const users = await getUsers();
+
+      const existingUser = users.find(
+        (user) => user.email.trim().toLowerCase() === userData.email.trim().toLowerCase()
+      );
+      if(existingUser){
+        throw new Error("User already exists");
+      }
+      return registerUser(userData);
+    },
 
     onSuccess: () => {
-      alert("Registration success");
+      // alert("Registration success");
       navigate("/login");
     },
 
     onError: (error) => {
       console.log(error);
-      alert("Registration failed");
+      setError(error.message);
     },
   });
 
@@ -38,6 +51,11 @@ function RegisterPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if(formData.password !== formData.confirmPassword){
+      setError("Password doesn't match");
+      return;
+    }
+    setError("")
     registerMutation.mutate(formData);
   };
 
@@ -45,6 +63,7 @@ function RegisterPage() {
     <div className="flex flex-col justify-center items-center mt-50">
       <h1 className="text-4xl font-extrabold">Register</h1>
 
+        
       <form onSubmit={handleSubmit}
       className="flex flex-col  py-13 px-4 w-100 border rounded-md mt-2 gap-2">
 
@@ -74,6 +93,15 @@ function RegisterPage() {
           onChange={handleChange}
           className="border rounded-sm py-2 pl-2"
         />
+        
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          className="border rounded-sm py-2 pl-2"
+        />
 
         <button
           type="submit"
@@ -85,6 +113,10 @@ function RegisterPage() {
             : "Register"}
         </button>
 
+            {error &&(
+          <div className="w-80 rounded-md px-4 py-3 text-red-500">
+            {error}</div>
+        )}
         <p>
             Already have an account?{" "}
             <Link to="/login">

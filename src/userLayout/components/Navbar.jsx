@@ -1,6 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
+
+
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -12,11 +14,12 @@ function Navbar() {
   const handleLogout = () => {
     dispatch(logout())
   }
+  const navigate = useNavigate()
   return (
     <nav className='flex justify-between m-4 p-4 border-b'>
 
       <Link to="/">
-        <h1>LOOT-NATION</h1>
+        <h1>FitBoy Repacks</h1>
       </Link>
 
         
@@ -30,6 +33,9 @@ function Navbar() {
         placeholder='Search Games'
         />
 
+        <button onClick={()=>navigate("games")}>
+          Games
+        </button>
         <Link to="/wishlist">
         Wishlist
         </Link>
