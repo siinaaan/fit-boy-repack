@@ -4,9 +4,10 @@ import Login from "./userLayout/pages/loginPage";
 import Register from "./userLayout/pages/registerPage";
 import Home from "./userLayout/pages/Home";
 import ProtectedRoute from "./userLayout/components/ProtectedRoute";
-import UserNav from "./userLayout/components/UserNav";
 import Games from "./userLayout/pages/Games";
 import GameDetails from "./userLayout/pages/GameDetails";
+import Cart from "./userLayout/pages/Cart";
+import Wishlist from "./userLayout/pages/Wishlist";
 
 function App() {
   return (
@@ -18,17 +19,11 @@ function App() {
       <Route path="/" element={<Home />}>
         <Route index element={<div>Home</div>} />
         <Route path="games" element={<Games />} />
-        <Route path="/games/:id" element={<GameDetails />} />
+        <Route path="/games/:id" element={<GameDetails />}/>
+        <Route path="/cart" element = {<Cart />} />
+        <Route path="/wishlist" element = {<Wishlist />} />
       </Route>
 
-      {/* <Route
-        path="/games/:id"
-        element={
-          <ProtectedRoute>
-            <GameDetails />
-          </ProtectedRoute>
-        }
-      /> */}
     </Routes>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate,Link } from 'react-router-dom';
 
-
+import { logout } from '../features/authSlice';
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -11,12 +11,21 @@ function Navbar() {
     (state) => state.auth.user
   );
 
+  const cartItems = useSelector(
+    (state) => state.cart.items
+  );
+
+  const cartCount = cartItems.reduce(
+    (total, item) => total + Number(item.quantity || 0),
+    0
+  )
+
   const handleLogout = () => {
     dispatch(logout())
   }
   const navigate = useNavigate()
   return (
-    <nav className='flex justify-between m-4 p-4 border-b'>
+    <nav className='flex  justify-between m-4 p-4 border-b'>
 
       <Link to="/">
         <h1>FitBoy Repacks</h1>
@@ -33,7 +42,7 @@ function Navbar() {
         placeholder='Search Games'
         />
 
-        <button onClick={()=>navigate("games")}>
+        <button onClick={()=>navigate("/games")}>
           Games
         </button>
         <Link to="/wishlist">
@@ -41,7 +50,7 @@ function Navbar() {
         </Link>
 
         <Link to="/cart">
-          Cart
+          Cart ({cartCount})
         </Link>
         
 

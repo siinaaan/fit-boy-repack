@@ -8,11 +8,11 @@
       "id": "1BTI6SBZeLA"
     },
     {
-      "name": "Sinan Muhammed",
-      "email": "siinaaan21@gmail.com",
+      "name": "Muhammed Sinan V",
+      "email": "thangan@gmail",
       "password": "123456",
       "confirmPassword": "123456",
-      "id": "IN-_1C__oMg"
+      "id": "MxyAfQ2Nkxw"
     }
   ],
   "games": [
@@ -158,6 +158,21 @@
         "https://i.pinimg.com/1200x/b9/42/77/b94277af77a34c6629711717a13a476e.jpg"
       ],
       "description": "Experience an open-world action adventure in Los Santos and Blaine County, featuring Story Mode and GTA Online."
+    }
+  ],
+  "cartItems": [
+    {
+      "userId": "MxyAfQ2Nkxw",
+      "gameId": "1",
+      "quantity": 1,
+      "id": "8YryAjR6Bf4"
+    }
+  ],
+  "wishlistItems": [
+    {
+      "userId": "1BTI6SBZeLA",
+      "gameId": "1",
+      "id": "zCAKpWUJjM8"
     }
   ],
   "orders": [],
