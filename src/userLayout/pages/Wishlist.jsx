@@ -7,12 +7,12 @@ import { deleteWishlistItem } from "../api/wishlistApi";
 
 import {
     addCartItem,
-    updateCartItem,
     getCartItems,
 } from "../api/cartApi"
 
 import { removeFromWishlist } from "../features/wishlistSlice";
 import { addToCart } from "../features/cartSlice";
+import toast from "react-hot-toast";
 
 function Wishlist() {
   const dispatch = useDispatch();
@@ -27,6 +27,7 @@ function Wishlist() {
 
   const handleAddToCart = async (game) => {
     if(!user){
+      toast.error("Please login to add games to cart.")
         return;
     }
 
@@ -39,12 +40,8 @@ function Wishlist() {
         let savedItem;
 
         if(existingItem){
-
-          //increase quantity
-          savedItem = await updateCartItem(
-            existingItem.id,
-            existingItem.quantity + 1
-          );
+          toast.error(`${game.title} is already in your cart!`);
+          return;
         }else{
           //Add new cart Item
           savedItem = await addCartItem({
@@ -55,10 +52,12 @@ function Wishlist() {
         }
 
         dispatch(addToCart(savedItem));
+        toast.success(`${game.title} added to cart`)
     }catch(error){
       console.error(
-        "Failed to add game to cart"
+        "Failed to add game to cart",error
       );
+      toast.error("Failed to add game to cart.")
     }
   };
 
@@ -100,11 +99,15 @@ function Wishlist() {
       dispatch(
         removeFromWishlist(wishlistItem.id)
       );
+
+      toast.success("Game removed from wishlist!")
     } catch (error) {
       console.error(
         "Failed to remove wishlist item:",
         error
       );
+
+      toast.error("Failed to remove game from wishlist")
     }
   };
 

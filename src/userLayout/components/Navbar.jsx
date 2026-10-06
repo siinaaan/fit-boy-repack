@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate,Link } from 'react-router-dom';
-
+import toast from 'react-hot-toast';
 import { logout } from '../features/authSlice';
 
 function Navbar() {
@@ -22,6 +22,8 @@ function Navbar() {
 
   const handleLogout = () => {
     dispatch(logout())
+
+    toast.success("Logged out successfully!")
   }
   const navigate = useNavigate()
   return (
@@ -54,9 +56,15 @@ function Navbar() {
         </Link>
         
 
-        <button onClick={handleLogout}>
+        {user?(
+          <button onClick={handleLogout}>
           Logout
         </button>
+        ):(
+          <button onClick={()=> navigate("/login")}>
+            Login
+          </button>
+        )}
         
     </nav>
   )

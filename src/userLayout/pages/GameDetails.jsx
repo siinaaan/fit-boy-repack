@@ -3,8 +3,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
 import { getGameById } from "../api/gameApi";
-import { addCartItem, updateCartItem, getCartItems } from "../api/cartApi";
+import { addCartItem, getCartItems } from "../api/cartApi";
 import { X } from "lucide-react";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../features/cartSlice";
 
@@ -19,7 +20,6 @@ function GameDetails() {
   const user = useSelector((state) => state.auth.user);
 
   const [selectedImage, setSelectedImage] = useState(0);
-  const [buying, setBuying] = useState(false);
   const [adding, setAdding] = useState(false);
 
   const {
@@ -33,6 +33,7 @@ function GameDetails() {
 
   const handleAddToCart = async () => {
     if (!user) {
+      toast.error("Please login to add games to cart.");
       navigate("/login");
       return;
     }
@@ -51,27 +52,28 @@ function GameDetails() {
       let savedItem;
 
       if (existingItem) {
-        // Game exists: increase quantity
-        savedItem = await updateCartItem(
-          existingItem.id,
-          existingItem.quantity + 1,
-        );
-      } else {
-        // Game doesn't exist: create a new cart record
-        savedItem = await addCartItem({
-          userId: user.id,
-          gameId: game.id,
-          quantity: 1,
-        });
+        toast.error(`${game.title} is already in your cart`);
+        return;
       }
+
+      // Game doesn't exist: create a new cart record
+      savedItem = await addCartItem({
+        userId: user.id,
+        gameId: game.id,
+        quantity: 1,
+      });
 
       // Update Redux with the database cart record
       dispatch(addToCart(savedItem));
+
+      toast.success(`${game.title} added to cart!`);
+
       await queryClient.invalidateQueries({
         queryKey: ["cart", user.id],
-      })
+      });
     } catch (error) {
       console.error("Failed to add game to cart:", error);
+      toast.error("Failed to add game to cart.");
     } finally {
       setAdding(false);
     }
@@ -79,22 +81,14 @@ function GameDetails() {
 
   //BUY Now
 
-  const handleBuyNow = async () => {
+  const handleBuyNow = () => {
     if (!user) {
+      toast.error("Please login to buy this game.");
       navigate("/login");
       return;
     }
 
-    try {
-      setBuying(true);
-
-      console.log("Buying Game: ", game);
-      alert(`Purchase successful! \n\n${game.title}`);
-    } catch (error) {
-      console.error("Purchase failed: ", error);
-    } finally {
-      setBuying(false);
-    }
+    navigate(`/checkout?gameId=${game.id}`);
   };
 
   if (isLoading) {
@@ -168,10 +162,9 @@ function GameDetails() {
             <button
               type="button"
               onClick={handleBuyNow}
-              disabled={buying}
               className="flex-1 rounded-lg border border-amber-500 px-6 py-3 font-semibold text-amber-500 transition hover:bg-amber-500 hover:text-black"
             >
-              {buying ? "Processing" : "Buy Now"}
+              Buy Now
             </button>
           </div>
         </div>

@@ -9,6 +9,8 @@ import { setUser } from "../features/authSlice";
 
 import { Link } from "react-router-dom";
 
+import toast from "react-hot-toast";
+
 function loginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -34,16 +36,20 @@ function loginPage() {
 
     onSuccess: (user) => {
       dispatch(setUser(user));
+      toast.success("Logged in successfully!")
       navigate("/");
     },
 
     onError: (error) => {
       setError(error.message);
+      toast.error(error.message)
     },
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setError("");
 
     loginMutation.mutate();
   };

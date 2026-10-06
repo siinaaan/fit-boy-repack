@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Heart } from "lucide-react";
-
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addToCart } from "../features/cartSlice";
@@ -40,6 +40,7 @@ function GameCard({ game }) {
     e.preventDefault();
     
     if (!user) {
+      toast.error("Please login to add games to cart.")
       navigate("/login");
       return;
     }
@@ -55,25 +56,26 @@ function GameCard({ game }) {
       let savedItem;
 
       if (existingItem) {
-        // PATCH existing cart item
-        savedItem = await updateCartItem(
-          existingItem.id,
-          existingItem.quantity + 1
-        );
-      } else {
+        toast.error(`${game.title} is already in your cart!`);
+        return;
+        } 
         // POST new cart item
         savedItem = await addCartItem({
           userId: user.id,
           gameId: game.id,
           quantity: 1,
         });
-      }
+      
 
       dispatch(addToCart(savedItem));
+      toast.success(`${game.title} added to cart!`);
+      
     }catch(error){
         console.error(
             "Failed to add games to cart",error
-        )
+        );
+
+        toast.error("Failed to add game to cart.")
     }
      
   };
@@ -84,6 +86,7 @@ function GameCard({ game }) {
     
 
     if(!user) {
+      toast.error("Please login to add games to wishlist.")
       navigate("/login");
       return;
     }
@@ -99,6 +102,7 @@ function GameCard({ game }) {
 
         dispatch(removeFromWishlist(existingItem.id)
       );
+      toast.success(`${game.title} removed from wishlist!`);
         return;
       }
 
@@ -108,8 +112,11 @@ function GameCard({ game }) {
       });
 
       dispatch(addToWishlist(savedItem));
+      toast.success(`${game.title} added to wishlist!`);
     }catch(error){
-      console.error("Failed to update wishlist: ", error)
+      console.error("Failed to update wishlist: ", error);
+
+      toast.error("Failed to update wishlist.")
     }
   };
 

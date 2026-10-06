@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser,getUsers } from "../api/authApi";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function RegisterPage() {
 
@@ -31,13 +32,14 @@ function RegisterPage() {
     },
 
     onSuccess: () => {
-      // alert("Registration success");
+      toast.success("Account created successfully")
       navigate("/login");
     },
 
     onError: (error) => {
       console.log(error);
       setError(error.message);
+      toast.error(error.message)
     },
   });
 
@@ -51,11 +53,13 @@ function RegisterPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    setError("");
+
     if(formData.password !== formData.confirmPassword){
       setError("Password doesn't match");
+      toast.error("Password doesn't match");
       return;
     }
-    setError("")
     registerMutation.mutate(formData);
   };
 

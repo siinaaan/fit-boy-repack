@@ -9,6 +9,7 @@ import App from "./App";
 
 import { store } from "./userLayout/app/store";
 import { queryClient } from "./userLayout/app/queryClient";
+import { Toaster } from "react-hot-toast";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -19,6 +20,34 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
         <BrowserRouter>
           <App />
+          <Toaster 
+            position="top-right"
+  toastOptions={{
+    duration: 3000,
+
+    style: {
+      background: "#18181b",
+      color: "#ffffff",
+      border: "1px solid #3f3f46",
+      borderRadius: "10px",
+      padding: "12px 16px",
+      fontSize: "14px",
+    },
+
+    success: {
+      iconTheme: {
+        primary: "#22c55e",
+        secondary: "#ffffff",
+      },
+    },
+
+    error: {
+      iconTheme: {
+        primary: "#ef4444",
+        secondary: "#ffffff",
+      },
+    },
+  }}/>
         </BrowserRouter>
 
       </QueryClientProvider>

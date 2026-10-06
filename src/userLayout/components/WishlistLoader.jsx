@@ -28,15 +28,15 @@ function WishlistLoader() {
   console.log("Wishlist API data:", wishlistItems);
 
   useEffect(() => {
-    if (wishlistItems) {
-      console.log(
-        "Putting wishlist into Redux:",
-        wishlistItems
-      );
+    if(!user?.id){
+      dispatch(setWishlist([]));
+      return;
+    }
 
+    if (wishlistItems) {
       dispatch(setWishlist(wishlistItems));
     }
-  }, [wishlistItems, dispatch]);
+  }, [user?.id,wishlistItems, dispatch]);
 
   if (isLoading) {
     console.log("Loading wishlist...");
