@@ -165,6 +165,136 @@
         "https://i.pinimg.com/1200x/b9/42/77/b94277af77a34c6629711717a13a476e.jpg"
       ],
       "description": "Experience an open-world action adventure in Los Santos and Blaine County, featuring Story Mode and GTA Online."
+    },
+    {
+      "id": "12",
+      "title": "Ghost of Tsushima",
+      "price": 49.99,
+      "category": "Action Adventure",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/1200x/75/0d/cf/750dcfbbff35014736dfd37462f40902.jpg",
+        "https://i.pinimg.com/736x/8f/b2/bd/8fb2bd3acbc33e19c370d13ece4af3b1.jpg",
+        "https://i.pinimg.com/736x/40/89/9c/40899c94c8a80410854e051e6ef01b80.jpg"
+      ],
+      "description": "Experience an epic open-world samurai adventure on Tsushima Island, featuring intense sword combat, exploration, stealth, and a gripping story of honor and revenge."
+    },
+    {
+      "id": "13",
+      "title": "EA Sports FC 26",
+      "price": 69.99,
+      "category": "Sports",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/21/e0/6c/21e06cfce96cbf35e14d70b62a7b269d.jpg",
+        "https://i.pinimg.com/736x/c7/17/1f/c7171fde719178ac257ca92a8bfe8966.jpg",
+        "https://i.pinimg.com/736x/08/9a/27/089a271dd8f33b7baee86b7d939de680.jpg"
+      ],
+      "description": "Experience the next generation of football with authentic clubs, players, competitions, and immersive gameplay across multiple game modes."
+    },
+    {
+      "id": "14",
+      "title": "EA Sports FC 27",
+      "price": 69.99,
+      "category": "Sports",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/34/80/1d/34801de67269cddf4f256716e0cf59e1.jpg",
+        "https://i.pinimg.com/1200x/75/af/55/75af551919a942b80ee21626a928ac53.jpg",
+        "https://i.pinimg.com/736x/e1/20/c9/e120c935177546035a783911fdb841de.jpg"
+      ],
+      "description": "Experience immersive next-generation football with authentic teams, players, competitions, and exciting gameplay across a variety of game modes."
+    },
+    {
+      "id": "15",
+      "title": "Grand Theft Auto VI",
+      "price": 69.99,
+      "category": "Open world",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/98/da/ef/98daef839b798e46881a2cac06312e4a.jpg",
+        "https://i.pinimg.com/736x/89/2a/47/892a477dc609c5e6ec6557365abf3e1c.jpg",
+        "https://i.pinimg.com/736x/22/57/ec/2257ecda39f9234ea2ed3cda70461211.jpg"
+      ],
+      "description": "Return to the neon-lit streets and sun-soaked landscapes of Vice City in an ambitious open-world crime adventure featuring a new story, characters, and expansive world to explore."
+    },
+    {
+      "id": "16",
+      "title": "The Last of Us Part I",
+      "price": 59.99,
+      "category": "Action Adventure",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/f5/b5/5c/f5b55ce7d70840c0287e23efa1ae921b.jpg",
+        "https://i.pinimg.com/736x/27/25/82/272582d3ab59b16be8bc43e1dffce40d.jpg",
+        "https://i.pinimg.com/1200x/db/40/02/db40028b2be3ebecec7e5ad723c0bb5a.jpg"
+      ],
+      "description": "Experience an emotional post-apocalyptic journey as Joel and Ellie travel across a dangerous United States, facing survivors, infected creatures, and difficult choices."
+    },
+    {
+      "id": "17",
+      "title": "Detroit: Become Human",
+      "price": 39.99,
+      "category": "Adventure",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/1200x/02/57/82/02578205dfb67b5f3e216dc46c501d7d.jpg",
+        "https://i.pinimg.com/736x/75/d1/90/75d1908ee1515cda8696a396c3d02653.jpg",
+        "https://i.pinimg.com/736x/14/5f/46/145f46bf623ca53d053454b89c54343f.jpg"
+      ],
+      "description": "Step into a futuristic world where androids and humans coexist, making critical choices that shape the story and determine the fate of multiple characters."
+    },
+    {
+      "id": "18",
+      "title": "Grand Theft Auto: Vice City",
+      "price": 19.99,
+      "category": "Open world",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/42/13/93/421393bfa9db848dba2b58c60f2efdd4.jpg",
+        "https://i.pinimg.com/736x/d3/36/63/d3366391c91d83086ab2c0d744bd1c1c.jpg",
+        "https://i.pinimg.com/736x/08/a5/b8/08a5b845c604cb5e7ac1bfb26e193b5a.jpg"
+      ],
+      "description": "Enter the neon-soaked streets of 1980s Vice City as Tommy Vercetti, building a criminal empire through intense missions, memorable characters, and classic open-world gameplay."
+    },
+    {
+      "id": "19",
+      "title": "Grand Theft Auto: San Andreas",
+      "price": 19.99,
+      "category": "Open world",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/3f/4f/fd/3f4ffdd16be66982a322aaa8acc3ae35.jpg",
+        "https://i.pinimg.com/736x/c1/be/ac/c1beac721cf7137acde68b0ae1af4a9c.jpg",
+        "https://i.pinimg.com/736x/18/8d/73/188d73e9973ee69346803f94962e7c8d.jpg"
+      ],
+      "description": "Follow Carl Johnson as he returns to Los Santos and becomes caught in a story of family, loyalty, crime, and revenge across the vast state of San Andreas."
+    },
+    {
+      "id": "20",
+      "title": "Black Myth: Wukong",
+      "price": 59.99,
+      "category": "Action RPG",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/72/34/b8/7234b8996bbe966f749588cebcaf2cd5.jpg",
+        "https://i.pinimg.com/1200x/1c/cc/26/1ccc2628e9b9752ca4bacb2e7795923d.jpg",
+        "https://i.pinimg.com/1200x/1e/32/a3/1e32a3098c0c9b15e1f1e405f1fa79e2.jpg"
+      ],
+      "description": "Embark on a legendary journey inspired by Chinese mythology as the Destined One, mastering powerful combat abilities and uncovering the secrets of an ancient world."
+    },
+    {
+      "id": "21",
+      "title": "Call of Duty: Black Ops 6",
+      "price": 69.99,
+      "category": "Shooter",
+      "platform": "PC",
+      "image": [
+        "https://i.pinimg.com/736x/83/58/9d/83589d8de990e45c165d25d5cd676bb5.jpg",
+        "https://i.pinimg.com/736x/ef/77/04/ef7704c9b4ca90af5c4f4bb53042982c.jpg",
+        "https://i.pinimg.com/736x/26/5b/1a/265b1a6e907f2d8582ebf839f69b1786.jpg"
+      ],
+      "description": "Enter a thrilling Cold War-era campaign filled with intense firefights, espionage, and cinematic action, alongside fast-paced multiplayer and the iconic Zombies experience."
     }
   ],
   "cartItems": [
@@ -175,48 +305,7 @@
       "id": "8YryAjR6Bf4"
     }
   ],
-  "wishlistItems": [
-    {
-      "userId": "1BTI6SBZeLA",
-      "gameId": "1",
-      "id": "VI-RgH-d21I"
-    }
-  ],
-  "orders": [
-    {
-      "userId": "1BTI6SBZeLA",
-      "items": [
-        {
-          "gameId": "1",
-          "title": "Cyberpunk 2077",
-          "price": 39.99,
-          "image": "https://i.pinimg.com/736x/e6/40/7f/e6407fc9aafc4166a24c7354e26bd956.jpg"
-        }
-      ],
-      "totalAmount": 39.99,
-      "paymentMethod": "UPI",
-      "paymentStatus": "unpaid",
-      "orderStatus": "pending",
-      "createdAt": "2026-10-06T07:23:36.662Z",
-      "id": "cXeexMeYptU"
-    },
-    {
-      "userId": "1BTI6SBZeLA",
-      "items": [
-        {
-          "gameId": "1",
-          "title": "Cyberpunk 2077",
-          "price": 39.99,
-          "image": "https://i.pinimg.com/736x/e6/40/7f/e6407fc9aafc4166a24c7354e26bd956.jpg"
-        }
-      ],
-      "totalAmount": 39.99,
-      "paymentMethod": "UPI",
-      "paymentStatus": "unpaid",
-      "orderStatus": "pending",
-      "createdAt": "2026-10-06T07:27:13.508Z",
-      "id": "MgDV4K8rpLI"
-    }
-  ],
+  "wishlistItems": [],
+  "orders": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

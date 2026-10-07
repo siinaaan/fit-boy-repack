@@ -1,12 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { registerUser,getUsers } from "../api/authApi";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
+import { registerUser, getUsers } from "../api/authApi";
+
 import toast from "react-hot-toast";
 
 function RegisterPage() {
-
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -16,30 +16,34 @@ function RegisterPage() {
     confirmPassword: "",
   });
 
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
   const registerMutation = useMutation({
     mutationFn: async (userData) => {
       const users = await getUsers();
 
       const existingUser = users.find(
-        (user) => user.email.trim().toLowerCase() === userData.email.trim().toLowerCase()
+        (user) =>
+          user.email.trim().toLowerCase() ===
+          userData.email.trim().toLowerCase(),
       );
-      if(existingUser){
+
+      if (existingUser) {
         throw new Error("User already exists");
       }
+
       return registerUser(userData);
     },
 
     onSuccess: () => {
-      toast.success("Account created successfully")
+      toast.success("Account created successfully");
       navigate("/login");
     },
 
     onError: (error) => {
       console.log(error);
       setError(error.message);
-      toast.error(error.message)
+      toast.error(error.message);
     },
   });
 
@@ -55,81 +59,294 @@ function RegisterPage() {
 
     setError("");
 
-    if(formData.password !== formData.confirmPassword){
+    if (formData.password !== formData.confirmPassword) {
       setError("Password doesn't match");
       toast.error("Password doesn't match");
       return;
     }
+
     registerMutation.mutate(formData);
   };
 
   return (
-    <div className="flex flex-col justify-center items-center mt-50">
-      <h1 className="text-4xl font-extrabold">Register</h1>
+    <div className="min-h-screen flex items-center justify-center px-6">
 
-        
-      <form onSubmit={handleSubmit}
-      className="flex flex-col  py-13 px-4 w-100 border rounded-md mt-2 gap-2">
+      {/* Main Layout */}
+      <div className="flex w-full max-w-6xl items-center gap-24">
 
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={formData.name}
-          onChange={handleChange}
-          className="border rounded-sm py-2 pl-2"
-        />
+        {/* ===================================== */}
+        {/* LEFT SIDE - BRANDING */}
+        {/* ===================================== */}
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          className="border rounded-sm py-2 pl-2"
-        />
+        <div className="hidden w-1/2 text-center lg:block">
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          className="border rounded-sm py-2 pl-2"
-        />
-        
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-          className="border rounded-sm py-2 pl-2"
-        />
+          <h1
+            className="
+              text-4xl
+              font-black
+              tracking-wider
+              text-emerald-400
+              drop-shadow-[0_0_15px_rgba(16,185,129,0.6)]
+            "
+          >
+            FitBoy Repack
+          </h1>
 
-        <button
-          type="submit"
-          disabled={registerMutation.isPending}
-          className="border bg-gray-200 rounded-b-full"
+          <p className="mt-3 text-sm text-slate-400">
+            Your digital gaming universe
+          </p>
+
+        </div>
+
+
+        {/* ===================================== */}
+        {/* RIGHT SIDE - REGISTER FORM */}
+        {/* ===================================== */}
+
+        <form
+          onSubmit={handleSubmit}
+          className="
+            w-full
+            max-w-md
+            rounded-2xl
+            border
+            border-emerald-500/25
+            bg-[#07111a]/90
+            p-8
+            shadow-[0_0_35px_rgba(16,185,129,0.08)]
+            backdrop-blur-xl
+          "
         >
-          {registerMutation.isPending
-            ? "Creating..."
-            : "Register"}
-        </button>
 
-            {error &&(
-          <div className="w-80 rounded-md px-4 py-3 text-red-500">
-            {error}</div>
-        )}
-        <p>
+          {/* ===================================== */}
+          {/* FORM HEADING */}
+          {/* ===================================== */}
+
+          <div className="mb-6">
+
+            <h2 className="text-3xl font-bold text-white">
+              Create your account
+            </h2>
+
+            <p className="mt-2 text-sm text-slate-400">
+              Join us and start building your game library.
+            </p>
+
+          </div>
+
+
+          {/* ===================================== */}
+          {/* NAME */}
+          {/* ===================================== */}
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={formData.name}
+            onChange={handleChange}
+            autoComplete="name"
+            className="
+              mb-3
+              w-full
+              rounded-lg
+              border
+              border-emerald-500/20
+              bg-[#050b12]
+              px-4
+              py-3
+              text-white
+              outline-none
+              placeholder:text-slate-500
+              transition-all
+              duration-300
+              focus:border-emerald-400
+              focus:ring-2
+              focus:ring-emerald-400/20
+              focus:shadow-[0_0_15px_rgba(16,185,129,0.15)]
+            "
+          />
+
+
+          {/* ===================================== */}
+          {/* EMAIL */}
+          {/* ===================================== */}
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            autoComplete="email"
+            className="
+              mb-3
+              w-full
+              rounded-lg
+              border
+              border-emerald-500/20
+              bg-[#050b12]
+              px-4
+              py-3
+              text-white
+              outline-none
+              placeholder:text-slate-500
+              transition-all
+              duration-300
+              focus:border-emerald-400
+              focus:ring-2
+              focus:ring-emerald-400/20
+              focus:shadow-[0_0_15px_rgba(16,185,129,0.15)]
+            "
+          />
+
+
+          {/* ===================================== */}
+          {/* PASSWORD */}
+          {/* ===================================== */}
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            autoComplete="new-password"
+            className="
+              mb-3
+              w-full
+              rounded-lg
+              border
+              border-emerald-500/20
+              bg-[#050b12]
+              px-4
+              py-3
+              text-white
+              outline-none
+              placeholder:text-slate-500
+              transition-all
+              duration-300
+              focus:border-emerald-400
+              focus:ring-2
+              focus:ring-emerald-400/20
+              focus:shadow-[0_0_15px_rgba(16,185,129,0.15)]
+            "
+          />
+
+
+          {/* ===================================== */}
+          {/* CONFIRM PASSWORD */}
+          {/* ===================================== */}
+
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            autoComplete="new-password"
+            className="
+              mb-3
+              w-full
+              rounded-lg
+              border
+              border-emerald-500/20
+              bg-[#050b12]
+              px-4
+              py-3
+              text-white
+              outline-none
+              placeholder:text-slate-500
+              transition-all
+              duration-300
+              focus:border-emerald-400
+              focus:ring-2
+              focus:ring-emerald-400/20
+              focus:shadow-[0_0_15px_rgba(16,185,129,0.15)]
+            "
+          />
+
+
+          {/* ===================================== */}
+          {/* REGISTER BUTTON */}
+          {/* ===================================== */}
+
+          <button
+            type="submit"
+            disabled={registerMutation.isPending}
+            className="
+              mt-3
+              w-full
+              rounded-lg
+              bg-emerald-500
+              py-3
+              font-bold
+              text-black
+              transition-all
+              duration-300
+              hover:-translate-y-0.5
+              hover:bg-emerald-400
+              hover:shadow-[0_0_25px_rgba(16,185,129,0.5)]
+              active:translate-y-0
+              disabled:cursor-not-allowed
+              disabled:opacity-50
+            "
+          >
+            {registerMutation.isPending
+              ? "Creating..."
+              : "Register"}
+          </button>
+
+
+          {/* ===================================== */}
+          {/* ERROR MESSAGE */}
+          {/* ===================================== */}
+
+          {error && (
+            <div
+              className="
+                mt-3
+                rounded-lg
+                border
+                border-red-500/20
+                bg-red-500/10
+                px-4
+                py-3
+                text-sm
+                text-red-400
+              "
+            >
+              {error}
+            </div>
+          )}
+
+
+          {/* ===================================== */}
+          {/* LOGIN LINK */}
+          {/* ===================================== */}
+
+          <p className="mt-6 text-center text-sm text-slate-400">
+
             Already have an account?{" "}
-            <Link to="/login">
-              <span className="font-semibold text-blue-500">
-                Login
-              </span>
+
+            <Link
+              to="/login"
+              className="
+                font-semibold
+                text-emerald-400
+                transition
+                hover:text-emerald-300
+                hover:drop-shadow-[0_0_8px_rgba(16,185,129,0.7)]
+              "
+            >
+              Login
             </Link>
-        </p>
-      </form>
+
+          </p>
+
+        </form>
+
+      </div>
     </div>
   );
 }
