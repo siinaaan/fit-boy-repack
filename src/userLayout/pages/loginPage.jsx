@@ -59,11 +59,8 @@ function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-6">
-
-      {/* Main Container */}
+     
       <div className="flex w-full max-w-5xl items-center gap-16">
-
-        {/* LEFT SIDE - BRANDING */}
 
         <div className="hidden flex-1 text-center lg:block">
 

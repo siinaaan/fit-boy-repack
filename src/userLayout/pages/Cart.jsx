@@ -20,17 +20,17 @@ function Cart() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Logged-in user
+  
   const user = useSelector(
     (state) => state.auth.user
   );
 
-  // Redux cart
+  
   const cartItems = useSelector(
     (state) => state.cart.items
   );
 
-  // Fetch all games
+  
   const {
     data: games = [],
     isLoading,
@@ -40,10 +40,7 @@ function Cart() {
     queryFn: getGames,
   });
 
-  // ========================================
-  // REMOVE ONE GAME
-  // ========================================
-
+  
   const handleRemoveItem = async (cartItem) => {
     try {
       await deleteCartItem(cartItem.id);
@@ -64,10 +61,6 @@ function Cart() {
       );
     }
   };
-
-  // ========================================
-  // CLEAR CART
-  // ========================================
 
   const handleClearCart = async () => {
     if (!user) {
@@ -103,9 +96,6 @@ function Cart() {
     }
   };
 
-  // ========================================
-  // PROCEED TO CHECKOUT
-  // ========================================
 
   const handleCheckout = () => {
     if (!user) {
@@ -125,14 +115,8 @@ function Cart() {
       return;
     }
 
-    // No gameId means:
-    // Checkout all games in cart
     navigate("/checkout");
   };
-
-  // ========================================
-  // LOADING
-  // ========================================
 
   if (isLoading) {
     return (
@@ -142,9 +126,6 @@ function Cart() {
     );
   }
 
-  // ========================================
-  // ERROR
-  // ========================================
 
   if (isError) {
     return (
@@ -155,10 +136,6 @@ function Cart() {
       </div>
     );
   }
-
-  // ========================================
-  // EMPTY CART
-  // ========================================
 
   if (cartItems.length === 0) {
     return (
@@ -196,9 +173,6 @@ function Cart() {
     );
   }
 
-  // ========================================
-  // TOTAL PRICE
-  // ========================================
 
   const total = cartItems.reduce(
     (sum, cartItem) => {
@@ -212,22 +186,15 @@ function Cart() {
         return sum;
       }
 
-      // Digital games always have quantity 1
       return sum + Number(game.price);
     },
     0
   );
 
-  // ========================================
-  // CART UI
-  // ========================================
-
   return (
     <div className="min-h-screen bg-zinc-950 p-6 text-white">
 
       <div className="mx-auto max-w-6xl">
-
-        {/* HEADER */}
 
         <div className="mb-8 flex items-center justify-between">
 
@@ -245,8 +212,6 @@ function Cart() {
 
         </div>
 
-
-        {/* CART ITEMS */}
 
         <div className="space-y-4">
 
@@ -268,16 +233,11 @@ function Cart() {
                 className="flex items-center gap-5 rounded-xl border border-zinc-800 bg-zinc-900 p-4"
               >
 
-                {/* IMAGE */}
-
                 <img
                   src={game.image?.[0]}
                   alt={game.title}
                   className="h-32 w-24 rounded-lg object-cover"
                 />
-
-
-                {/* GAME DETAILS */}
 
                 <div className="flex-1">
 
@@ -299,8 +259,6 @@ function Cart() {
 
                 </div>
 
-
-                {/* PRICE + REMOVE */}
 
                 <div className="text-right">
 
@@ -328,8 +286,6 @@ function Cart() {
         </div>
 
 
-        {/* ORDER SUMMARY */}
-
         <div className="mt-8 flex justify-end">
 
           <div className="w-full max-w-md rounded-xl border border-zinc-800 bg-zinc-900 p-6">
@@ -339,7 +295,6 @@ function Cart() {
             </h2>
 
 
-            {/* ITEMS */}
 
             <div className="mt-4 flex justify-between text-gray-400">
 
@@ -354,8 +309,6 @@ function Cart() {
             </div>
 
 
-            {/* TOTAL */}
-
             <div className="mt-3 flex justify-between text-xl font-bold">
 
               <span>
@@ -368,8 +321,6 @@ function Cart() {
 
             </div>
 
-
-            {/* CHECKOUT */}
 
             <button
               type="button"

@@ -35,7 +35,6 @@ function GameCard({ game }) {
     (state) => state.wishlist.items
   );
 
-  // Library ownership
   const { isOwned } = useLibrary();
 
   const owned = isOwned(game.id);
@@ -44,10 +43,6 @@ function GameCard({ game }) {
     (item) =>
       String(item.gameId) === String(game.id)
   );
-
-  // =========================
-  // ADD TO CART
-  // =========================
 
   const handleAddToCart = async (e) => {
     e.preventDefault();
@@ -96,10 +91,6 @@ function GameCard({ game }) {
       );
     }
   };
-
-  // =========================
-  // WISHLIST
-  // =========================
 
   const handleWishlist = async (e) => {
     e.preventDefault();
@@ -165,9 +156,7 @@ function GameCard({ game }) {
   };
 
   return (
-    <div className="relative">
-
-      {/* Game Image */}
+    <div className="relative transition-all duration-300 hover:z-40 hover:scale-102">
 
       <Link to={`/games/${game.id}`}>
         <img
@@ -176,9 +165,6 @@ function GameCard({ game }) {
           className="h-120 w-full object-cover"
         />
       </Link>
-
-
-      {/* Wishlist */}
 
       <button
         type="button"
@@ -205,9 +191,6 @@ function GameCard({ game }) {
         />
       </button>
 
-
-      {/* Game Information */}
-
       <div className="p-4">
 
         <Link to={`/games/${game.id}`}>
@@ -223,9 +206,6 @@ function GameCard({ game }) {
         <p className="mt-3 text-lg font-semibold">
           ${game.price}
         </p>
-
-
-        {/* Ownership */}
 
         {owned ? (
 

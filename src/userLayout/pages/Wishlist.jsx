@@ -43,7 +43,6 @@ function Wishlist() {
           toast.error(`${game.title} is already in your cart!`);
           return;
         }else{
-          //Add new cart Item
           savedItem = await addCartItem({
             userId: user.id,
             gameId: game.id,

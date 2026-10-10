@@ -22,7 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <App />
           <Toaster 
             position="top-right"
-  toastOptions={{
+    toastOptions={{
     duration: 3000,
 
     style: {
@@ -30,8 +30,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       color: "#ffffff",
       border: "1px solid #3f3f46",
       borderRadius: "10px",
-      padding: "12px 16px",
+      padding: "16px 18px",
       fontSize: "14px",
+      marginTop: "60px",
     },
 
     success: {

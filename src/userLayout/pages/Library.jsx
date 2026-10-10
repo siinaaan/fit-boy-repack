@@ -21,19 +21,11 @@ function Library() {
 
   const user = useSelector((state) => state.auth.user);
 
-  // ============================================
-  // REMOVE MODAL STATE
-  // ============================================
-
   const [showRemoveModal, setShowRemoveModal] =
     useState(false);
 
   const [selectedGame, setSelectedGame] =
     useState(null);
-
-  // ============================================
-  // GET CURRENT USER'S ORDERS
-  // ============================================
 
   const {
     data: orders = [],
@@ -45,10 +37,6 @@ function Library() {
     enabled: !!user?.id,
   });
 
-  // ============================================
-  // GET ALL GAMES
-  // ============================================
-
   const {
     data: games = [],
     isLoading: gamesLoading,
@@ -58,31 +46,18 @@ function Library() {
     queryFn: getGames,
   });
 
-  // ============================================
-  // OPEN REMOVE CONFIRMATION MODAL
-  // ============================================
-
   const openRemoveModal = (game) => {
     setSelectedGame(game);
     setShowRemoveModal(true);
   };
-
-  // ============================================
-  // CLOSE REMOVE CONFIRMATION MODAL
-  // ============================================
 
   const closeRemoveModal = () => {
     setShowRemoveModal(false);
     setSelectedGame(null);
   };
 
-  // ============================================
-  // REMOVE GAME FROM LIBRARY
-  // ============================================
-
   const handleRemoveFromLibrary = async (gameId) => {
     try {
-      // Find the completed order containing this game
 
       const order = orders.find(
         (order) =>
@@ -94,17 +69,11 @@ function Library() {
           )
       );
 
-      // Game not found
-
       if (!order) {
         toast.error("Game not found in library.");
         closeRemoveModal();
         return;
       }
-
-      // ==========================================
-      // REMOVE ONLY THE SELECTED GAME
-      // ==========================================
 
       const updatedItems = order.items.filter(
         (item) =>
@@ -112,21 +81,11 @@ function Library() {
           String(gameId)
       );
 
-      // ==========================================
-      // IF THIS IS THE ONLY GAME IN THE ORDER
-      // ==========================================
-
       if (updatedItems.length === 0) {
         await deleteOrder(order.id);
       }
 
-      // ==========================================
-      // IF ORDER HAS OTHER GAMES
-      // ==========================================
-
       else {
-        // Recalculate total
-
         const updatedTotal =
           updatedItems.reduce(
             (total, item) =>
@@ -134,31 +93,17 @@ function Library() {
             0
           );
 
-        // Update existing order
-
         await updateOrder(order.id, {
           items: updatedItems,
           totalAmount: updatedTotal,
         });
       }
 
-      // ==========================================
-      // REFRESH ORDERS
-      // ==========================================
-
       await queryClient.invalidateQueries({
         queryKey: ["orders", user.id],
       });
 
-      // ==========================================
-      // CLOSE MODAL
-      // ==========================================
-
       closeRemoveModal();
-
-      // ==========================================
-      // SUCCESS MESSAGE
-      // ==========================================
 
       toast.success(
         "Game removed from library."
@@ -176,9 +121,6 @@ function Library() {
     }
   };
 
-  // ============================================
-  // LOGIN CHECK
-  // ============================================
 
   if (!user) {
     return (
@@ -208,10 +150,6 @@ function Library() {
     );
   }
 
-  // ============================================
-  // LOADING
-  // ============================================
-
   if (ordersLoading || gamesLoading) {
     return (
       <div className="min-h-screen bg-zinc-950 p-8 text-white">
@@ -228,9 +166,6 @@ function Library() {
     );
   }
 
-  // ============================================
-  // ERROR
-  // ============================================
 
   if (ordersError || gamesError) {
     return (
@@ -248,18 +183,10 @@ function Library() {
     );
   }
 
-  // ============================================
-  // ONLY COMPLETED ORDERS
-  // ============================================
-
   const completedOrders = orders.filter(
     (order) =>
       order.orderStatus === "completed"
   );
-
-  // ============================================
-  // GET PURCHASED GAME IDS
-  // ============================================
 
   const purchasedGameIds =
     completedOrders.flatMap(
@@ -269,17 +196,10 @@ function Library() {
         ) || []
     );
 
-  // ============================================
-  // REMOVE DUPLICATE GAME IDS
-  // ============================================
-
   const uniqueGameIds = [
     ...new Set(purchasedGameIds),
   ];
 
-  // ============================================
-  // FIND ACTUAL GAME OBJECTS
-  // ============================================
 
   const purchasedGames = games.filter(
     (game) =>
@@ -288,18 +208,11 @@ function Library() {
       )
   );
 
-  // ============================================
-  // UI
-  // ============================================
-
   return (
     <div className="min-h-screen bg-zinc-950 p-8 text-white">
 
       <div className="mx-auto max-w-7xl">
 
-        {/* ================================= */}
-        {/* HEADER */}
-        {/* ================================= */}
 
         <div className="mb-10">
 
@@ -313,9 +226,6 @@ function Library() {
 
         </div>
 
-        {/* ================================= */}
-        {/* EMPTY LIBRARY */}
-        {/* ================================= */}
 
         {purchasedGames.length === 0 ? (
 
@@ -344,9 +254,6 @@ function Library() {
         ) : (
 
           <>
-            {/* ================================= */}
-            {/* GAME COUNT */}
-            {/* ================================= */}
 
             <p className="mb-6 text-sm text-zinc-400">
 
@@ -360,9 +267,6 @@ function Library() {
 
             </p>
 
-            {/* ================================= */}
-            {/* GAME GRID */}
-            {/* ================================= */}
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
@@ -373,10 +277,6 @@ function Library() {
                   className="group overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 transition duration-300 hover:-translate-y-1 hover:border-zinc-700"
                 >
 
-                  {/* ============================= */}
-                  {/* IMAGE */}
-                  {/* ============================= */}
-
                   <div className="relative overflow-hidden">
 
                     <img
@@ -385,17 +285,12 @@ function Library() {
                       className="h-72 w-full object-cover transition duration-500 group-hover:scale-105"
                     />
 
-                    {/* OWNED BADGE */}
-
                     <div className="absolute right-3 top-3 rounded-full bg-green-500 px-3 py-1 text-xs font-bold text-black">
                       ✓ Owned
                     </div>
 
                   </div>
 
-                  {/* ============================= */}
-                  {/* GAME INFORMATION */}
-                  {/* ============================= */}
 
                   <div className="p-5">
 
@@ -411,9 +306,6 @@ function Library() {
                       Digital Copy
                     </p>
 
-                    {/* ========================= */}
-                    {/* DOWNLOAD BUTTON */}
-                    {/* ========================= */}
 
                     <button
                       type="button"
@@ -421,10 +313,6 @@ function Library() {
                     >
                       Download
                     </button>
-
-                    {/* ========================= */}
-                    {/* REMOVE BUTTON */}
-                    {/* ========================= */}
 
                     <button
                       type="button"
@@ -450,23 +338,16 @@ function Library() {
 
       </div>
 
-      {/* ========================================= */}
-      {/* REMOVE CONFIRMATION MODAL */}
-      {/* ========================================= */}
-
+      {/* REMOVE CONFIRMATION */}
       {showRemoveModal && selectedGame && (
 
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6">
 
           <div className="w-full max-w-md rounded-2xl border border-zinc-700 bg-zinc-900 p-6 shadow-2xl">
 
-            {/* MODAL TITLE */}
-
             <h2 className="text-2xl font-bold text-white">
               Remove Game?
             </h2>
-
-            {/* MESSAGE */}
 
             <p className="mt-4 text-zinc-400">
 
@@ -485,11 +366,9 @@ function Library() {
               game again.
             </p>
 
-            {/* BUTTONS */}
 
             <div className="mt-6 flex gap-3">
 
-              {/* CANCEL */}
 
               <button
                 type="button"
@@ -498,8 +377,6 @@ function Library() {
               >
                 Cancel
               </button>
-
-              {/* REMOVE */}
 
               <button
                 type="button"

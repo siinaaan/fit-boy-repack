@@ -71,12 +71,7 @@ function RegisterPage() {
   return (
     <div className="min-h-screen flex items-center justify-center px-6">
 
-      {/* Main Layout */}
       <div className="flex w-full max-w-6xl items-center gap-24">
-
-        {/* ===================================== */}
-        {/* LEFT SIDE - BRANDING */}
-        {/* ===================================== */}
 
         <div className="hidden w-1/2 text-center lg:block">
 
@@ -99,10 +94,6 @@ function RegisterPage() {
         </div>
 
 
-        {/* ===================================== */}
-        {/* RIGHT SIDE - REGISTER FORM */}
-        {/* ===================================== */}
-
         <form
           onSubmit={handleSubmit}
           className="
@@ -118,9 +109,6 @@ function RegisterPage() {
           "
         >
 
-          {/* ===================================== */}
-          {/* FORM HEADING */}
-          {/* ===================================== */}
 
           <div className="mb-6">
 
@@ -134,10 +122,6 @@ function RegisterPage() {
 
           </div>
 
-
-          {/* ===================================== */}
-          {/* NAME */}
-          {/* ===================================== */}
 
           <input
             type="text"
@@ -166,11 +150,6 @@ function RegisterPage() {
               focus:shadow-[0_0_15px_rgba(16,185,129,0.15)]
             "
           />
-
-
-          {/* ===================================== */}
-          {/* EMAIL */}
-          {/* ===================================== */}
 
           <input
             type="email"
@@ -201,10 +180,6 @@ function RegisterPage() {
           />
 
 
-          {/* ===================================== */}
-          {/* PASSWORD */}
-          {/* ===================================== */}
-
           <input
             type="password"
             name="password"
@@ -232,11 +207,6 @@ function RegisterPage() {
               focus:shadow-[0_0_15px_rgba(16,185,129,0.15)]
             "
           />
-
-
-          {/* ===================================== */}
-          {/* CONFIRM PASSWORD */}
-          {/* ===================================== */}
 
           <input
             type="password"
@@ -266,11 +236,6 @@ function RegisterPage() {
             "
           />
 
-
-          {/* ===================================== */}
-          {/* REGISTER BUTTON */}
-          {/* ===================================== */}
-
           <button
             type="submit"
             disabled={registerMutation.isPending}
@@ -297,11 +262,6 @@ function RegisterPage() {
               : "Register"}
           </button>
 
-
-          {/* ===================================== */}
-          {/* ERROR MESSAGE */}
-          {/* ===================================== */}
-
           {error && (
             <div
               className="
@@ -320,10 +280,6 @@ function RegisterPage() {
             </div>
           )}
 
-
-          {/* ===================================== */}
-          {/* LOGIN LINK */}
-          {/* ===================================== */}
 
           <p className="mt-6 text-center text-sm text-slate-400">
 

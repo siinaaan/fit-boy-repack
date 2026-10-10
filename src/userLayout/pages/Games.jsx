@@ -11,19 +11,11 @@ function Games() {
 
   const [showMore, setShowMore] = useState(false);
 
-  // ============================================
-  // URL PARAMETERS
-  // ============================================
-
   const searchQuery =
     searchParams.get("search") || "";
 
   const selectedCategory =
     searchParams.get("category") || "";
-
-  // ============================================
-  // GET GAMES
-  // ============================================
 
   const {
     data: games = [],
@@ -33,10 +25,6 @@ function Games() {
     queryKey: ["games"],
     queryFn: getGames,
   });
-
-  // ============================================
-  // CATEGORY HANDLER
-  // ============================================
 
   const handleCategory = (category) => {
     setShowMore(false);
@@ -54,10 +42,6 @@ function Games() {
     setSearchParams(params);
   };
 
-  // ============================================
-  // FILTER GAMES
-  // ============================================
-
   const filteredGames = games.filter((game) => {
     const searchText =
       searchQuery.toLowerCase().trim();
@@ -65,20 +49,12 @@ function Games() {
     const categoryText =
       selectedCategory.toLowerCase().trim();
 
-    // Search filter
     const matchesSearch =
       !searchText ||
       game.title
         ?.toLowerCase()
-        .includes(searchText) ||
-      game.category
-        ?.toLowerCase()
-        .includes(searchText) ||
-      game.description
-        ?.toLowerCase()
-        .includes(searchText);
+        .includes(searchText)
 
-    // Category filter
     const matchesCategory =
       !categoryText ||
       game.category
@@ -91,10 +67,6 @@ function Games() {
     );
   });
 
-  // ============================================
-  // LOADING
-  // ============================================
-
   if (isLoading) {
     return (
       <div className="p-6">
@@ -103,9 +75,6 @@ function Games() {
     );
   }
 
-  // ============================================
-  // ERROR
-  // ============================================
 
   if (error) {
     return (
@@ -120,13 +89,8 @@ function Games() {
   return (
     <div className="p-6">
 
-      {/* ========================================= */}
-      {/* HEADER + CATEGORY NAV */}
-      {/* ========================================= */}
 
       <div className="mb-6 flex items-center gap-8 border-b">
-
-        {/* ALL GAMES */}
 
         <button
           type="button"
@@ -142,7 +106,6 @@ function Games() {
           All Games
         </button>
 
-        {/* OPEN WORLD */}
 
         <button
           type="button"
@@ -159,7 +122,6 @@ function Games() {
           Open World
         </button>
 
-        {/* ACTION */}
 
         <button
           type="button"
@@ -176,7 +138,6 @@ function Games() {
           Action
         </button>
 
-        {/* RPG */}
 
         <button
           type="button"
@@ -192,10 +153,6 @@ function Games() {
         >
           RPG
         </button>
-
-        {/* ================================= */}
-        {/* MORE DROPDOWN */}
-        {/* ================================= */}
 
         <div className="relative pb-3">
 
@@ -221,8 +178,6 @@ function Games() {
             </span>
 
           </button>
-
-          {/* DROPDOWN */}
 
           {showMore && (
 
@@ -296,10 +251,6 @@ function Games() {
 
       </div>
 
-      {/* ========================================= */}
-      {/* SEARCH RESULT */}
-      {/* ========================================= */}
-
       {searchQuery && (
         <p className="mb-5 text-sm text-zinc-500">
           Search results for{" "}
@@ -309,10 +260,6 @@ function Games() {
         </p>
       )}
 
-      {/* ========================================= */}
-      {/* CATEGORY RESULT */}
-      {/* ========================================= */}
-
       {selectedCategory && (
         <p className="mb-5 text-sm text-zinc-400">
           Category:{" "}
@@ -321,10 +268,6 @@ function Games() {
           </span>
         </p>
       )}
-
-      {/* ========================================= */}
-      {/* NO RESULTS */}
-      {/* ========================================= */}
 
       {filteredGames.length === 0 ? (
 
@@ -341,10 +284,6 @@ function Games() {
         </div>
 
       ) : (
-
-        /* ========================================= */
-        /* GAME GRID */
-        /* ========================================= */
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
 

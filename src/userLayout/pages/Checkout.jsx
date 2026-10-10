@@ -16,38 +16,14 @@ function Checkout() {
 
   const [searchParams] = useSearchParams();
 
-  /*
-    If gameId exists:
-    Buy Now from GameDetails
-
-    If gameId doesn't exist:
-    Checkout from Cart
-  */
 
   const gameId = searchParams.get("gameId");
 
-  // ========================================
-  // USER
-  // ========================================
-
   const user = useSelector((state) => state.auth.user);
-
-  // ========================================
-  // CART
-  // ========================================
 
   const cartItems = useSelector((state) => state.cart.items);
 
-  // ========================================
-  // PAYMENT METHOD
-  // ========================================
-
   const [paymentMethod, setPaymentMethod] = useState("UPI");
-
-  // ========================================
-  // FETCH SINGLE GAME
-  // Used for Buy Now
-  // ========================================
 
   const {
     data: game,
@@ -59,11 +35,6 @@ function Checkout() {
     enabled: !!gameId,
   });
 
-  // ========================================
-  // FETCH ALL GAMES
-  // Used for Cart Checkout
-  // ========================================
-
   const {
     data: games = [],
     isLoading: gamesLoading,
@@ -74,52 +45,40 @@ function Checkout() {
     enabled: !gameId,
   });
 
-  // ========================================
-  // CREATE ORDER
-  // ========================================
-
   const orderMutation = useMutation({
     mutationFn: createOrder,
 
     onSuccess: async (order) => {
   try {
     if (user) {
-      // Get the user's current cart from JSON Server
       const currentCartItems = await getCartItems(user.id);
 
-      // Get IDs of games that were just purchased
       const purchasedGameIds = new Set(
         order.items.map((item) => String(item.gameId))
       );
 
-      // Find only the purchased games inside the cart
       const purchasedCartItems = currentCartItems.filter((cartItem) =>
         purchasedGameIds.has(String(cartItem.gameId))
       );
 
-      // Delete purchased games from JSON Server cart
       await Promise.all(
         purchasedCartItems.map((cartItem) =>
           deleteCartItem(cartItem.id)
         )
       );
 
-      // Keep any games that were NOT purchased
       const remainingCartItems = currentCartItems.filter(
         (cartItem) =>
           !purchasedGameIds.has(String(cartItem.gameId))
       );
 
-      // Update Redux immediately
       dispatch(setCart(remainingCartItems));
     }
 
-    // Refresh orders
     await queryClient.invalidateQueries({
       queryKey: ["orders", user.id],
     });
 
-    // Refresh cart
     await queryClient.invalidateQueries({
       queryKey: ["cart", user.id],
     });
@@ -144,10 +103,6 @@ function Checkout() {
     },
   });
 
-  // ========================================
-  // LOGIN CHECK
-  // ========================================
-
   if (!user) {
     return (
       <div className="min-h-screen bg-zinc-950 p-8 text-white">
@@ -168,17 +123,7 @@ function Checkout() {
     );
   }
 
-  // ========================================
-  // BUILD CHECKOUT ITEMS
-  // ========================================
-
   let checkoutItems = [];
-
-  /*
-    BUY NOW FROM GAME DETAILS
-
-    /checkout?gameId=2
-  */
 
   if (gameId && game) {
     checkoutItems = [
@@ -191,11 +136,6 @@ function Checkout() {
     ];
   } else if (!gameId) {
 
-  /*
-    CHECKOUT FROM CART
-
-    /checkout
-  */
     checkoutItems = cartItems
       .map((cartItem) => {
         const cartGame = games.find(
@@ -216,18 +156,10 @@ function Checkout() {
       .filter(Boolean);
   }
 
-  // ========================================
-  // TOTAL
-  // ========================================
-
   const totalAmount = checkoutItems.reduce(
     (total, item) => total + Number(item.price),
     0,
   );
-
-  // ========================================
-  // PLACE ORDER
-  // ========================================
 
   const handlePlaceOrder = () => {
     if (!user) {
@@ -251,14 +183,6 @@ function Checkout() {
 
       paymentMethod,
 
-      /*
-        Demo payment.
-
-        Later, when we integrate a real
-        payment gateway, this should only
-        become "paid" after payment succeeds.
-      */
-
       paymentStatus: "paid",
 
       orderStatus: "completed",
@@ -268,10 +192,6 @@ function Checkout() {
 
     orderMutation.mutate(order);
   };
-
-  // ========================================
-  // NO GAME ID + EMPTY CART
-  // ========================================
 
   if (!gameId && !gamesLoading && cartItems.length === 0) {
     return (
@@ -295,10 +215,6 @@ function Checkout() {
     );
   }
 
-  // ========================================
-  // LOADING
-  // ========================================
-
   if ((gameId && gameLoading) || (!gameId && gamesLoading)) {
     return (
       <div className="min-h-screen bg-zinc-950 p-8 text-white">
@@ -306,10 +222,6 @@ function Checkout() {
       </div>
     );
   }
-
-  // ========================================
-  // ERROR
-  // ========================================
 
   if ((gameId && gameError) || (!gameId && gamesError)) {
     return (
@@ -327,10 +239,6 @@ function Checkout() {
     );
   }
 
-  // ========================================
-  // GAME NOT FOUND
-  // ========================================
-
   if (gameId && !game) {
     return (
       <div className="min-h-screen bg-zinc-950 p-8 text-white">
@@ -347,15 +255,9 @@ function Checkout() {
     );
   }
 
-  // ========================================
-  // CHECKOUT UI
-  // ========================================
-
   return (
     <div className="min-h-screen bg-zinc-950 p-8 text-white">
       <div className="mx-auto max-w-6xl">
-        {/* HEADER */}
-
         <div className="mb-8">
           <h1 className="text-3xl font-bold">Checkout</h1>
 
@@ -363,9 +265,6 @@ function Checkout() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {/* ==================================
-              ORDER SUMMARY
-          =================================== */}
 
           <div className="rounded-2xl bg-zinc-900 p-6">
             <h2 className="mb-6 text-xl font-semibold">Order Summary</h2>
@@ -376,7 +275,6 @@ function Checkout() {
                   key={item.gameId}
                   className="flex gap-5 border-b border-zinc-800 pb-5"
                 >
-                  {/* IMAGE */}
 
                   <img
                     src={item.image}
@@ -384,7 +282,6 @@ function Checkout() {
                     className="h-32 w-24 rounded-xl object-cover"
                   />
 
-                  {/* DETAILS */}
 
                   <div className="flex-1">
                     <h3 className="text-xl font-bold">{item.title}</h3>
@@ -399,7 +296,6 @@ function Checkout() {
               ))}
             </div>
 
-            {/* TOTAL */}
 
             <div className="mt-6 flex justify-between border-t border-zinc-800 pt-6">
               <span className="text-lg text-zinc-400">Total</span>
@@ -410,15 +306,10 @@ function Checkout() {
             </div>
           </div>
 
-          {/* ==================================
-              PAYMENT
-          =================================== */}
-
           <div className="rounded-2xl bg-zinc-900 p-6">
             <h2 className="mb-6 text-xl font-semibold">Payment Method</h2>
 
             <div className="space-y-4">
-              {/* UPI */}
 
               <label
                 className={`flex cursor-pointer items-center gap-4 rounded-lg border p-4 transition ${
@@ -444,7 +335,6 @@ function Checkout() {
                 </div>
               </label>
 
-              {/* CARD */}
 
               <label
                 className={`flex cursor-pointer items-center gap-4 rounded-lg border p-4 transition ${
@@ -471,7 +361,6 @@ function Checkout() {
               </label>
             </div>
 
-            {/* ORDER TOTAL */}
 
             <div className="mt-8 border-t border-zinc-700 pt-6">
               <div className="flex items-center justify-between">
@@ -482,7 +371,6 @@ function Checkout() {
                 </span>
               </div>
 
-              {/* PLACE ORDER */}
 
               <button
                 type="button"

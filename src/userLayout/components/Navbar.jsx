@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from "react";
 import fitboy from "../assets/FitBoy.png";
+import { useQuery } from "@tanstack/react-query";
+import { getGames } from "../api/gameApi";
+import { useDispatch, useSelector } from "react-redux";
 
-import {
-  useDispatch,
-  useSelector,
-} from "react-redux";
-
-import {
-  useNavigate,
-  Link,
-  useSearchParams,
-} from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
 
 import toast from "react-hot-toast";
 
 import { logout } from "../features/authSlice";
+import { X } from "lucide-react";
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -22,73 +17,53 @@ function Navbar() {
 
   const [searchParams] = useSearchParams();
 
-  const user = useSelector(
-    (state) => state.auth.user
-  );
+  const [search, setSearch] = useState(searchParams.get("search") || "");
 
-  const cartItems = useSelector(
-    (state) => state.cart.items
-  );
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
-  // ============================================
-  // SEARCH STATE
-  // ============================================
+  const { data: games = [] } = useQuery({
+    queryKey: ["games"],
+    queryFn: getGames,
+  });
 
-  const [search, setSearch] = useState(
-    searchParams.get("search") || ""
-  );
+  const filteredGames = games
+    .filter((game) =>
+      game.title?.toLowerCase().includes(search.trim().toLowerCase()),
+    )
+    .slice(0, 6);
 
-  // ============================================
-  // KEEP SEARCH INPUT SYNCED WITH URL
-  // ============================================
+  const user = useSelector((state) => state.auth.user);
+
+  const cartItems = useSelector((state) => state.cart.items);
 
   useEffect(() => {
     setSearch(searchParams.get("search") || "");
   }, [searchParams]);
 
-  // ============================================
-  // CART COUNT
-  // ============================================
-
   const cartCount = cartItems.reduce(
-    (total, item) =>
-      total + Number(item.quantity || 0),
-    0
+    (total, item) => total + Number(item.quantity || 0),
+    0,
   );
-
-  // ============================================
-  // LOGOUT
-  // ============================================
 
   const handleLogout = () => {
     dispatch(logout());
 
-    toast.success(
-      "Logged out successfully!"
-    );
+    toast.success("Logged out successfully!");
   };
-
-  // ============================================
-  // SEARCH
-  // ============================================
 
   const handleSearch = (e) => {
     e.preventDefault();
 
     const searchValue = search.trim();
 
-    // Empty search
+    setShowSuggestions(false);
+
     if (!searchValue) {
       navigate("/games");
       return;
     }
 
-    // Navigate to Games with search query
-    navigate(
-      `/games?search=${encodeURIComponent(
-        searchValue
-      )}`
-    );
+    navigate(`/games?search=${encodeURIComponent(searchValue)}`);
   };
 
   return (
@@ -105,11 +80,6 @@ function Navbar() {
         shadow-[0_4px_25px_rgba(16,185,129,0.05)]
       "
     >
-
-      {/* ================================= */}
-      {/* NAVBAR CONTAINER */}
-      {/* ================================= */}
-
       <div
         className="
           flex
@@ -121,11 +91,6 @@ function Navbar() {
           lg:px-10
         "
       >
-
-        {/* ================================= */}
-        {/* LOGO */}
-        {/* ================================= */}
-
         <Link
           to="/"
           className="
@@ -136,7 +101,6 @@ function Navbar() {
             gap-3
           "
         >
-
           <img
             src={fitboy}
             alt="FitBoy Repacks"
@@ -155,7 +119,6 @@ function Navbar() {
           />
 
           <div className="hidden sm:block">
-
             <h1
               className="
                 text-lg
@@ -168,18 +131,9 @@ function Navbar() {
               FitBoy Repacks
             </h1>
 
-            <p className="text-xs text-slate-500">
-              Gaming Universe
-            </p>
-
+            <p className="text-xs text-slate-500">Gaming Universe</p>
           </div>
-
         </Link>
-
-
-        {/* ================================= */}
-        {/* HOME */}
-        {/* ================================= */}
 
         <Link
           to="/"
@@ -197,7 +151,6 @@ function Navbar() {
           "
         >
           Home
-
           <span
             className="
               absolute
@@ -215,71 +168,84 @@ function Navbar() {
           />
         </Link>
 
-
-        {/* ================================= */}
-        {/* SEARCH */}
-        {/* ================================= */}
-
-        <form
-          onSubmit={handleSearch}
-          className="
-            hidden
-            w-full
-            max-w-md
-            overflow-hidden
-            rounded-lg
-            border
-            border-emerald-500/20
-            bg-[#07111a]
-            transition-all
-            duration-300
-            focus-within:border-emerald-400
-            focus-within:shadow-[0_0_20px_rgba(16,185,129,0.15)]
-            md:flex
-          "
-        >
-
-          <input
-            type="text"
-            value={search}
-            onChange={(e) =>
-              setSearch(e.target.value)
-            }
-            placeholder="Search games..."
-            className="
-              w-full
-              bg-transparent
-              px-4
-              py-3
-              text-sm
-              text-white
-              outline-none
-              placeholder:text-slate-500
-            "
-          />
-
-          <button
-            type="submit"
-            className="
-              bg-emerald-500
-              px-6
-              font-semibold
-              text-black
-              transition-all
-              duration-300
-              hover:bg-emerald-400
-              hover:shadow-[0_0_20px_rgba(16,185,129,0.5)]
-            "
+        <div className="relative hidden w-full max-w-md md:block">
+          <form
+            onSubmit={handleSearch}
+            className="flex overflow-hidden rounded-lg border border-emerald-500/20 bg-[#07111a] transition-all focus-within:border-emerald-400 focus-within:shadow-[0_0_20px_rgba(16,185,129,0.15)]"
           >
-            Search
-          </button>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setShowSuggestions(true);
+              }}
+              onFocus={() => setShowSuggestions(true)}
+              onBlur={() => {
+                setTimeout(() => setShowSuggestions(false), 150);
+              }}
+              placeholder="Search games..."
+              autoComplete="off"
+              className="w-full min-w-0 bg-transparent px-4 py-3 text-sm text-white outline-none placeholder:text-slate-500"
+            />
 
-        </form>
+            {search &&(
+              <button 
+              type="button"
+              aria-label="Clear search"
+              onClick={()=>{
+                setSearch("");
+                setShowSuggestions(false);
+                navigate("/games");
+              }}
+              className="px-3 text-lg text-slate-400 transition hover:text-red-400">
+                <X size={18} className="text-slate-400" />
+              </button>
+            )}
 
+            <button
+              type="submit"
+              className="bg-emerald-500 px-6 font-semibold text-black transition-all hover:bg-emerald-400"
+            >
+              Search
+            </button>
+          </form>
 
-        {/* ================================= */}
-        {/* GAMES */}
-        {/* ================================= */}
+          {showSuggestions && search.trim() && (
+            <div className="absolute left-0 right-0 top-full z-[100] mt-2 overflow-hidden rounded-xl border border-emerald-500/20 bg-[#07111a] shadow-xl">
+              {filteredGames.length > 0 ? (
+                filteredGames.map((game) => (
+                  <button
+                    key={game.id}
+                    type="button"
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => {
+                      setShowSuggestions(false);
+                      setSearch("");
+                      navigate(`/games/${game.id}`);
+                    }}
+                    className="flex w-full items-center gap-3 p-3 text-left transition hover:bg-emerald-500/10"
+                  >
+                    <img
+                      src={game.image?.[0]}
+                      alt=""
+                      className="h-12 w-10 rounded object-cover"
+                    />
+
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-medium text-white">
+                        {game.title}
+                      </p>
+                      <p className="text-xs text-slate-400">{game.category}</p>
+                    </div>
+                  </button>
+                ))
+              ) : (
+                <p className="p-4 text-sm text-slate-400">No games found.</p>
+              )}
+            </div>
+          )}
+        </div>
 
         <button
           type="button"
@@ -298,7 +264,6 @@ function Navbar() {
           "
         >
           Games
-
           <span
             className="
               absolute
@@ -316,11 +281,6 @@ function Navbar() {
           />
         </button>
 
-
-        {/* ================================= */}
-        {/* LIBRARY */}
-        {/* ================================= */}
-
         <Link
           to="/library"
           className="
@@ -337,7 +297,6 @@ function Navbar() {
           "
         >
           Library
-
           <span
             className="
               absolute
@@ -354,11 +313,6 @@ function Navbar() {
             "
           />
         </Link>
-
-
-        {/* ================================= */}
-        {/* WISHLIST */}
-        {/* ================================= */}
 
         <Link
           to="/wishlist"
@@ -376,7 +330,6 @@ function Navbar() {
           "
         >
           Wishlist
-
           <span
             className="
               absolute
@@ -393,11 +346,6 @@ function Navbar() {
             "
           />
         </Link>
-
-
-        {/* ================================= */}
-        {/* CART */}
-        {/* ================================= */}
 
         <Link
           to="/cart"
@@ -416,9 +364,7 @@ function Navbar() {
             hover:text-emerald-400
           "
         >
-
           Cart
-
           <span
             className="
               flex
@@ -439,16 +385,9 @@ function Navbar() {
           >
             {cartCount}
           </span>
-
         </Link>
 
-
-        {/* ================================= */}
-        {/* AUTH */}
-        {/* ================================= */}
-
         {user ? (
-
           <button
             type="button"
             onClick={handleLogout}
@@ -471,9 +410,7 @@ function Navbar() {
           >
             Logout
           </button>
-
         ) : (
-
           <button
             type="button"
             onClick={() => navigate("/login")}
@@ -495,9 +432,7 @@ function Navbar() {
           >
             Login
           </button>
-
         )}
-
       </div>
     </nav>
   );

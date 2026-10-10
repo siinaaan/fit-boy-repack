@@ -17,9 +17,6 @@ function LandingPage() {
     queryFn: getGames,
   });
 
-  // ============================================
-  // LOADING
-  // ============================================
 
   if (isLoading) {
     return (
@@ -31,10 +28,6 @@ function LandingPage() {
     );
   }
 
-  // ============================================
-  // ERROR
-  // ============================================
-
   if (isError) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-zinc-950 text-red-400">
@@ -43,46 +36,31 @@ function LandingPage() {
     );
   }
 
-  // ============================================
-  // HERO GAMES
-  // ============================================
 
   const heroGames = games.slice(0, 17);
 
-  /*
-    12 HEXAGON POSITIONS
-
-    x = horizontal position
-    y = vertical position
-    size = size of hexagon
-  */
 const layout = [
-  // =========================
-  // ROW 1 — TOP
-  // =========================
 
-  // 1
   {
     x: 20,
     y: 15,
     size: 11,
   },
 
-  // 2
   {
     x: 39,
     y: 12,
     size: 11,
   },
 
-  // 3
+
   {
     x: 61,
     y: 12,
     size: 11,
   },
 
-  // 4
+
   {
     x: 80,
     y: 15,
@@ -90,32 +68,27 @@ const layout = [
   },
 
 
-  // =========================
-  // ROW 2 — UPPER MIDDLE
-  // =========================
-
-  // 5
   {
     x: 11,
     y: 38,
     size: 13,
   },
 
-  // 6
+
   {
     x: 29,
     y: 37,
     size: 13,
   },
 
-  // 7
+
   {
     x: 71,
     y: 37,
     size: 13,
   },
 
-  // 8
+
   {
     x: 89,
     y: 38,
@@ -123,45 +96,34 @@ const layout = [
   },
 
 
-  // =========================
-  // CENTER
-  // =========================
-
-  // 9 - FEATURED
   {
     x: 50,
-    y: 45,
+    y: 50,
     size: 25,
     featured: true,
   },
 
-
-  // =========================
-  // ROW 3 — LOWER MIDDLE
-  // =========================
-
-  // 10
-  {
+{
     x: 11,
     y: 63,
     size: 13,
   },
 
-  // 11
+
   {
     x: 29,
     y: 64,
     size: 13,
   },
 
-  // 12
+
   {
     x: 71,
     y: 64,
     size: 13,
   },
 
-  // 13
+
   {
     x: 89,
     y: 63,
@@ -169,32 +131,24 @@ const layout = [
   },
 
 
-  // =========================
-  // ROW 4 — BOTTOM
-  // =========================
-
-  // 14
   {
     x: 20,
     y: 84,
     size: 11,
   },
 
-  // 15
   {
     x: 39,
     y: 87,
     size: 11,
   },
 
-  // 16
   {
     x: 61,
     y: 87,
     size: 11,
   },
 
-  // 17
   {
     x: 80,
     y: 84,
@@ -202,21 +156,10 @@ const layout = [
   },
 ];
 
-  // ============================================
-  // TRENDING GAMES
-  // ============================================
-
+  // TRENDING GAMES / MORE GAMES / CATEGORIES
   const trendingGames = games.slice(14, 18);
 
-  // ============================================
-  // MORE GAMES
-  // ============================================
-
   const moreGames = games.slice(11, 15);
-
-  // ============================================
-  // CATEGORIES
-  // ============================================
 
   const categories = [
     {
@@ -260,19 +203,13 @@ const layout = [
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
-      {/* ================================================= */}
+ 
       {/* HERO SECTION */}
-      {/* ================================================= */}
-
       <section className="px-4 py-8 sm:px-6">
 
         <div className="mx-auto w-full max-w-[1250px]">
 
           <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-zinc-800 bg-[#101214] shadow-2xl">
-
-            {/* ========================================= */}
-            {/* HEXAGON BACKGROUND */}
-            {/* ========================================= */}
 
             <div className="absolute inset-0">
 
@@ -371,10 +308,7 @@ const layout = [
               );
             })}
 
-            {/* ========================================= */}
             {/* HERO BRAND */}
-            {/* ========================================= */}
-
             <div className="absolute bottom-6 left-6 z-30 sm:bottom-8 sm:left-8">
 
               <p className="text-[9px] font-semibold uppercase tracking-[0.35em] text-amber-500 sm:text-xs">
@@ -388,10 +322,6 @@ const layout = [
               </h1>
 
             </div>
-
-            {/* ========================================= */}
-            {/* BROWSE BUTTON */}
-            {/* ========================================= */}
 
             <button
               type="button"
@@ -409,10 +339,7 @@ const layout = [
 
       </section>
 
-      {/* ================================================= */}
-      {/* TRENDING GAMES */}
-      {/* ================================================= */}
-
+      
       <section className="px-4 py-12 sm:px-6">
 
         <div className="mx-auto max-w-7xl">
@@ -460,10 +387,7 @@ const layout = [
 
       </section>
 
-      {/* ================================================= */}
-      {/* CATEGORIES */}
-      {/* ================================================= */}
-
+    
       <section className="px-4 py-12 sm:px-6">
 
         <div className="mx-auto max-w-7xl">
@@ -525,9 +449,6 @@ const layout = [
 
       </section>
 
-      {/* ================================================= */}
-      {/* MORE GAMES */}
-      {/* ================================================= */}
 
       <section className="px-4 py-12 sm:px-6">
 
@@ -563,7 +484,7 @@ const layout = [
       </section>
 
       
-      {/* CTA */}
+
 
       <section className="px-4 py-16 sm:px-6">
 

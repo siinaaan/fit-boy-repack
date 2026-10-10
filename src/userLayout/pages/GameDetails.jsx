@@ -26,15 +26,10 @@ function GameDetails() {
     (state) => state.auth.user
   );
 
-  // Check whether the current user owns this game
   const { isOwned } = useLibrary();
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [adding, setAdding] = useState(false);
-
-  // ========================================
-  // GET GAME
-  // ========================================
 
   const {
     data: game,
@@ -44,10 +39,6 @@ function GameDetails() {
     queryKey: ["game", id],
     queryFn: () => getGameById(id),
   });
-
-  // ========================================
-  // ADD TO CART
-  // ========================================
 
   const handleAddToCart = async () => {
     if (!user) {
@@ -59,8 +50,6 @@ function GameDetails() {
       return;
     }
 
-    // Extra protection:
-    // Don't allow an owned game into cart
     if (isOwned(game.id)) {
       toast.error(
         `${game.title} is already in your library!`
@@ -72,12 +61,10 @@ function GameDetails() {
     try {
       setAdding(true);
 
-      // Get user's current cart
       const cartItems = await getCartItems(
         user.id
       );
 
-      // Check duplicate
       const existingItem = cartItems.find(
         (item) =>
           String(item.gameId) ===
@@ -92,21 +79,18 @@ function GameDetails() {
         return;
       }
 
-      // Add new cart item
       const savedItem = await addCartItem({
         userId: user.id,
         gameId: game.id,
         quantity: 1,
       });
 
-      // Update Redux
       dispatch(addToCart(savedItem));
 
       toast.success(
         `${game.title} added to cart!`
       );
 
-      // Refresh cart query
       await queryClient.invalidateQueries({
         queryKey: ["cart", user.id],
       });
@@ -126,10 +110,6 @@ function GameDetails() {
     }
   };
 
-  // ========================================
-  // BUY NOW
-  // ========================================
-
   const handleBuyNow = () => {
     if (!user) {
       toast.error(
@@ -140,7 +120,6 @@ function GameDetails() {
       return;
     }
 
-    // Don't allow purchasing the same game again
     if (isOwned(game.id)) {
       toast.error(
         `${game.title} is already in your library!`
@@ -154,10 +133,6 @@ function GameDetails() {
     );
   };
 
-  // ========================================
-  // LOADING
-  // ========================================
-
   if (isLoading) {
     return (
       <h2 className="p-8 text-white">
@@ -166,10 +141,6 @@ function GameDetails() {
     );
   }
 
-  // ========================================
-  // ERROR
-  // ========================================
-
   if (isError) {
     return (
       <h2 className="p-8 text-white">
@@ -177,20 +148,12 @@ function GameDetails() {
       </h2>
     );
   }
-
-  // Check ownership after game has loaded
   const owned = isOwned(game.id);
-
-  // ========================================
-  // UI
-  // ========================================
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6 text-white">
 
       <div className="relative grid max-h-[90vh] w-full max-w-6xl grid-cols-1 gap-8 overflow-y-auto scrollbar-none rounded-2xl bg-zinc-900 p-8 lg:grid-cols-2">
-
-        {/* CLOSE BUTTON */}
 
         <button
           onClick={() => navigate(-1)}
@@ -198,11 +161,6 @@ function GameDetails() {
         >
           <X size={28} />
         </button>
-
-
-        {/* ==================================
-            LEFT SIDE
-        =================================== */}
 
         <div>
 
@@ -215,9 +173,6 @@ function GameDetails() {
             />
 
           </div>
-
-
-          {/* THUMBNAILS */}
 
           <div className="mt-4 flex gap-4">
 
@@ -253,11 +208,6 @@ function GameDetails() {
 
         </div>
 
-
-        {/* ==================================
-            RIGHT SIDE
-        =================================== */}
-
         <div className="flex flex-col justify-center rounded-2xl bg-zinc-900 p-8">
 
           <h1 className="mt-6 text-3xl font-bold">
@@ -283,18 +233,9 @@ function GameDetails() {
             ${game.price}
           </p>
 
-
-          {/* ==================================
-              PURCHASE BUTTONS
-          =================================== */}
-
           <div className="mt-8 flex gap-4">
 
             {owned ? (
-
-              // ==================================
-              // ALREADY OWNED
-              // ==================================
 
               <button
                 type="button"
@@ -307,10 +248,6 @@ function GameDetails() {
               </button>
 
             ) : (
-
-              // ==================================
-              // NOT OWNED
-              // ==================================
 
               <>
                 <button
