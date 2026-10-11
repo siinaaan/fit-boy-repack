@@ -127,14 +127,14 @@ function Wishlist() {
   }
 
   return (
-    <div className="p-8 text-white">
+    <div className="p-4 sm:p-6 md:p-8 text-white">
 
-      <h1 className="mb-8 text-3xl font-bold">
+      <h1 className="mb-6 sm:mb-8 text-2xl sm:text-3xl font-bold">
         My Wishlist
       </h1>
 
       {wishlistGames.length === 0 ? (
-        <div className="rounded-xl bg-zinc-900 p-8">
+        <div className="rounded-xl bg-zinc-900 p-6 sm:p-8">
           <p className="text-gray-400">
             Your wishlist is empty.
           </p>
@@ -159,7 +159,7 @@ function Wishlist() {
                 <img
                   src={game.image[0]}
                   alt={game.title}
-                  className="h-80 w-full object-cover"
+                  className="h-64 sm:h-72 md:h-80 w-85"
                 />
 
                 <div className="p-4">
@@ -173,7 +173,7 @@ function Wishlist() {
                   </p>
 
                   <p className="mt-3 text-lg font-semibold">
-                    ${game.price}
+                    ₹ {game.price}
                   </p>
 
                   <button 

@@ -162,7 +162,7 @@ function GameCard({ game }) {
         <img
           src={game.image[0]}
           alt={game.title}
-          className="h-120 w-full object-cover"
+          className="h-72 sm:h-80 md:h-96 lg:h-120 w-full object-cover"
         />
       </Link>
 
@@ -179,7 +179,7 @@ function GameCard({ game }) {
             ? "In Wishlist"
             : "Add to Wishlist"
         }
-        className="absolute right-3 top-3 z-10 rounded-full bg-black/70 p-3 transition hover:bg-black"
+        className="absolute right-2.5 top-2.5 sm:right-3 sm:top-3 z-10 rounded-full bg-black/70 p-2.5 sm:p-3 transition hover:bg-black"
       >
         <Heart
           size={22}
@@ -191,10 +191,10 @@ function GameCard({ game }) {
         />
       </button>
 
-      <div className="p-4">
+      <div className="p-3.5 sm:p-4">
 
         <Link to={`/games/${game.id}`}>
-          <h2 className="text-xl font-bold">
+          <h2 className="text-lg sm:text-xl font-bold truncate">
             {game.title}
           </h2>
         </Link>
@@ -203,8 +203,8 @@ function GameCard({ game }) {
           {game.category}
         </p>
 
-        <p className="mt-3 text-lg font-semibold">
-          ${game.price}
+        <p className="mt-2 sm:mt-3 text-base sm:text-lg font-semibold">
+          ₹ {game.price}
         </p>
 
         {owned ? (
@@ -212,7 +212,7 @@ function GameCard({ game }) {
           <button
             type="button"
             onClick={() => navigate("/library")}
-            className="mt-4 w-full rounded-lg border border-green-500 px-4 py-2 font-semibold text-green-400 transition hover:bg-green-500 hover:text-black"
+            className="mt-3 sm:mt-4 w-full rounded-lg border border-green-500 px-4 py-2 text-sm sm:text-base font-semibold text-green-400 transition hover:bg-green-500 hover:text-black"
           >
             ✓ In Library
           </button>
@@ -222,7 +222,7 @@ function GameCard({ game }) {
           <button
             type="button"
             onClick={handleAddToCart}
-            className="mt-4 w-full rounded-lg bg-[#8b0d1a] px-4 py-2 font-semibold text-white hover:bg-[#fb3640]"
+            className="mt-3 sm:mt-4 w-full rounded-lg bg-[#8b0d1a] px-4 py-2 text-sm sm:text-base font-semibold text-white hover:bg-[#fb3640]"
           >
             Add to Cart
           </button>

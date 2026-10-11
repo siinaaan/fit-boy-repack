@@ -6,6 +6,10 @@ body,
   background-color: #050b12;
   color: #e5e7eb;
 }
+html,
+body {
+  overflow-x: hidden;
+}
 .grid-bg {
   background-image:
     linear-gradient(rgba(0, 229, 255, 0.3) 1px, transparent 1px),

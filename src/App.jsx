@@ -9,7 +9,7 @@ import Cart from "./userLayout/pages/Cart";
 import Wishlist from "./userLayout/pages/Wishlist";
 import Checkout from "./userLayout/pages/Checkout";
 import OrderSuccess from "./userLayout/pages/OrderSuccess";
-import Library from "./userLayout/pages/Library";
+import Orders from "./userLayout/pages/Order";
 import LandingPage from "./userLayout/pages/LandingPage";
 import PublicRoute from "./userLayout/components/PublicRoute";
 
@@ -29,7 +29,7 @@ function App() {
         <Route path="wishlist" element={<Wishlist />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="order-success" element={<OrderSuccess />} />
-        <Route path="library" element={<Library />} />
+        <Route path="orders" element={<Orders />} />
       </Route>
     </Routes>
   );

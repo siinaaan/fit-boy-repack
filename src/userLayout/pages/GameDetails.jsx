@@ -151,13 +151,13 @@ function GameDetails() {
   const owned = isOwned(game.id);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6 text-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-3 sm:p-6 text-white">
 
-      <div className="relative grid max-h-[90vh] w-full max-w-6xl grid-cols-1 gap-8 overflow-y-auto scrollbar-none rounded-2xl bg-zinc-900 p-8 lg:grid-cols-2">
+      <div className="relative grid max-h-[92vh] sm:max-h-[90vh] w-full max-w-6xl grid-cols-1 gap-6 lg:gap-8 overflow-y-auto scrollbar-none rounded-2xl bg-zinc-900 p-4 sm:p-6 lg:p-8 lg:grid-cols-2">
 
         <button
           onClick={() => navigate(-1)}
-          className="absolute right-5 top-5 z-50 cursor-pointer"
+          className="absolute right-3 top-3 sm:right-5 sm:top-5 z-50 cursor-pointer"
         >
           <X size={28} />
         </button>
@@ -169,12 +169,12 @@ function GameDetails() {
             <img
               src={game.image[selectedImage]}
               alt={game.title}
-              className="mt-6 h-120 w-80 rounded-xl object-cover"
+              className="mt-4 sm:mt-6 h-64 sm:h-96 lg:h-120 w-full rounded-xl object-cover"
             />
 
           </div>
 
-          <div className="mt-4 flex gap-4">
+          <div className="mt-4 flex gap-3 sm:gap-4 overflow-x-auto pb-2 scrollbar-none">
 
             {game.image.map(
               (image, index) => (
@@ -184,7 +184,7 @@ function GameDetails() {
                   onClick={() =>
                     setSelectedImage(index)
                   }
-                  className={`overflow-hidden rounded-lg border-2 ${
+                  className={`overflow-hidden rounded-lg border-2 flex-shrink-0 ${
                     selectedImage === index
                       ? "border-white"
                       : "border-transparent"
@@ -196,7 +196,7 @@ function GameDetails() {
                     alt={`${game.title} ${
                       index + 1
                     }`}
-                    className="h-20 w-32 object-cover"
+                    className="h-16 w-24 sm:h-20 sm:w-32 object-cover"
                   />
 
                 </button>
@@ -208,32 +208,32 @@ function GameDetails() {
 
         </div>
 
-        <div className="flex flex-col justify-center rounded-2xl bg-zinc-900 p-8">
+        <div className="flex flex-col justify-center rounded-2xl bg-zinc-900 p-2 sm:p-6 lg:p-8">
 
-          <h1 className="mt-6 text-3xl font-bold">
+          <h1 className="mt-2 sm:mt-6 text-2xl sm:text-3xl font-bold">
             {game.title}
           </h1>
 
 
-          <div className="mt-4 flex gap-3 text-gray-400">
+          <div className="mt-2 sm:mt-4 flex gap-3 text-gray-400">
 
-            <p className="mt-4 text-gray-500">
+            <p className="mt-2 sm:mt-4 text-gray-500">
               {game.category}
             </p>
 
           </div>
 
 
-          <p className="mt-6 leading-7 text-gray-300">
+          <p className="mt-4 sm:mt-6 leading-7 text-sm sm:text-base text-gray-300">
             {game.description}
           </p>
 
 
-          <p className="mt-8 text-3xl font-bold">
+          <p className="mt-6 sm:mt-8 text-2xl sm:text-3xl font-bold">
             ${game.price}
           </p>
 
-          <div className="mt-8 flex gap-4">
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
 
             {owned ? (
 

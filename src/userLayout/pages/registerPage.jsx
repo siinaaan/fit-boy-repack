@@ -69,7 +69,7 @@ function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6">
+    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-8">
 
       <div className="flex w-full max-w-6xl items-center gap-24">
 
@@ -103,7 +103,8 @@ function RegisterPage() {
             border
             border-emerald-500/25
             bg-[#07111a]/90
-            p-8
+            p-6
+            sm:p-8
             shadow-[0_0_35px_rgba(16,185,129,0.08)]
             backdrop-blur-xl
           "
@@ -112,7 +113,7 @@ function RegisterPage() {
 
           <div className="mb-6">
 
-            <h2 className="text-3xl font-bold text-white">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">
               Create your account
             </h2>
 

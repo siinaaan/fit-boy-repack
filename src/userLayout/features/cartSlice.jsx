@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { updateCartItem } from "../api/cartApi";
 
 const initialState = {
     items: [],
@@ -34,12 +35,24 @@ const cartSlice = createSlice({
             );
         },
 
+        updateCartQuantity: (state, action) => {
+            const { id, quantity } = action.payload;
+
+            const item = state.items.find(
+                (item) => String(item.id) === String(id)
+            );
+
+            if(item && quantity >= 1) {
+                item.quantity = quantity
+            }
+        },
+
         clearCart: (state) => {
             state.items = [];
         },
     },
 });
 
-export const { setCart, addToCart, removeFromCart, clearCart } = cartSlice.actions;
+export const { setCart, addToCart, removeFromCart, updateCartQuantity, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

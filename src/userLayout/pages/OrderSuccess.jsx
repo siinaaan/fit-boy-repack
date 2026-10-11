@@ -10,7 +10,7 @@ function OrderSuccess() {
   const orderId = searchParams.get("orderId");
 
   return (
-    <div className="min-h-screen bg-zinc-950 px-6 py-16 text-white">
+    <div className="min-h-screen bg-zinc-950 px-4 sm:px-6 py-10 sm:py-16 text-white">
 
       <div className="mx-auto max-w-xl text-center">
 
@@ -21,7 +21,7 @@ function OrderSuccess() {
           />
         </div>
 
-        <h1 className="mt-6 text-4xl font-bold">
+        <h1 className="mt-6 text-3xl sm:text-4xl font-bold">
           Order Successful!
         </h1>
 
@@ -46,7 +46,7 @@ function OrderSuccess() {
           connected later.
         </p>
 
-        <div className="mt-8 flex justify-center gap-4">
+        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
 
           <button
             onClick={() => navigate("/games")}

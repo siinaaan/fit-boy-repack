@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "name": "Sinan Muhammed",
-      "email": "siinaaan21@gmail.com",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": "1BTI6SBZeLA"
-    },
-    {
       "name": "Muhammed Sinan V",
       "email": "thangan@gmail",
       "password": "123456",
@@ -27,13 +20,20 @@
       "password": "123456",
       "confirmPassword": "123456",
       "id": "cHt-5zIQL-c"
+    },
+    {
+      "name": "USER1",
+      "email": "user1@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "id": "fJI2dPV00eU"
     }
   ],
   "games": [
     {
       "id": "1",
       "title": "Cyberpunk 2077",
-      "price": 39.99,
+      "price": 3799,
       "category": "RPG",
       "platform": "PC",
       "image": [
@@ -46,7 +46,7 @@
     {
       "id": "2",
       "title": "Red Dead Redemption 2",
-      "price": 29.99,
+      "price": 2799,
       "category": "Action",
       "platform": "PC",
       "image": [
@@ -59,7 +59,7 @@
     {
       "id": "3",
       "title": "Elden Ring",
-      "price": 49.99,
+      "price": 4799,
       "category": "RPG",
       "platform": "PC",
       "image": [
@@ -72,7 +72,7 @@
     {
       "id": "4",
       "title": "God of War Ragnarök",
-      "price": 59.99,
+      "price": 5799,
       "category": "Action",
       "platform": "PC",
       "image": [
@@ -85,7 +85,7 @@
     {
       "id": "5",
       "title": "Hogwarts Legacy",
-      "price": 44.99,
+      "price": 4399,
       "category": "Adventure",
       "platform": "PC",
       "image": [
@@ -98,7 +98,7 @@
     {
       "id": "6",
       "title": "Forza Horizon 5",
-      "price": 39.99,
+      "price": 3799,
       "category": "Racing",
       "platform": "PC",
       "image": [
@@ -111,7 +111,7 @@
     {
       "id": "7",
       "title": "Resident Evil 4",
-      "price": 34.99,
+      "price": 3399,
       "category": "Horror",
       "platform": "PC",
       "image": [
@@ -124,7 +124,7 @@
     {
       "id": "8",
       "title": "Assassin's Creed Mirage",
-      "price": 32.99,
+      "price": 3199,
       "category": "Action",
       "platform": "PC",
       "image": [
@@ -137,7 +137,7 @@
     {
       "id": "9",
       "title": "Marvel's Spider-Man ",
-      "price": 49.99,
+      "price": 4899,
       "category": "Action",
       "platform": "PC",
       "image": [
@@ -150,7 +150,7 @@
     {
       "id": "10",
       "title": "The Witcher 3",
-      "price": 29.99,
+      "price": 4199,
       "category": "RPG",
       "platform": "PC",
       "image": [
@@ -163,7 +163,7 @@
     {
       "id": "11",
       "title": "Grand Theft Auto V Enhanced",
-      "price": 39.99,
+      "price": 3899,
       "category": "Open world",
       "platform": "PC",
       "image": [
@@ -176,7 +176,7 @@
     {
       "id": "12",
       "title": "Ghost of Tsushima",
-      "price": 49.99,
+      "price": 4899,
       "category": "Action Adventure",
       "platform": "PC",
       "image": [
@@ -189,7 +189,7 @@
     {
       "id": "13",
       "title": "EA Sports FC 26",
-      "price": 69.99,
+      "price": 6799,
       "category": "Sports",
       "platform": "PC",
       "image": [
@@ -202,7 +202,7 @@
     {
       "id": "14",
       "title": "EA Sports FC 27",
-      "price": 69.99,
+      "price": 6799,
       "category": "Sports",
       "platform": "PC",
       "image": [
@@ -215,7 +215,7 @@
     {
       "id": "15",
       "title": "Grand Theft Auto VI",
-      "price": 69.99,
+      "price": 6799,
       "category": "Open world",
       "platform": "PC",
       "image": [
@@ -228,7 +228,7 @@
     {
       "id": "16",
       "title": "The Last of Us Part I",
-      "price": 59.99,
+      "price": 5799,
       "category": "Action Adventure",
       "platform": "PC",
       "image": [
@@ -241,7 +241,7 @@
     {
       "id": "17",
       "title": "Detroit: Become Human",
-      "price": 39.99,
+      "price": 3899,
       "category": "Adventure",
       "platform": "PC",
       "image": [
@@ -254,7 +254,7 @@
     {
       "id": "18",
       "title": "Grand Theft Auto: Vice City",
-      "price": 19.99,
+      "price": 1999,
       "category": "Open world",
       "platform": "PC",
       "image": [
@@ -267,7 +267,7 @@
     {
       "id": "19",
       "title": "Grand Theft Auto: San Andreas",
-      "price": 19.99,
+      "price": 1999,
       "category": "Open world",
       "platform": "PC",
       "image": [
@@ -280,7 +280,7 @@
     {
       "id": "20",
       "title": "Black Myth: Wukong",
-      "price": 59.99,
+      "price": 5799,
       "category": "Action RPG",
       "platform": "PC",
       "image": [
@@ -293,7 +293,7 @@
     {
       "id": "21",
       "title": "Call of Duty: Black Ops 6",
-      "price": 69.99,
+      "price": 6899,
       "category": "Shooter",
       "platform": "PC",
       "image": [
@@ -312,7 +312,98 @@
       "id": "8YryAjR6Bf4"
     }
   ],
-  "wishlistItems": [],
-  "orders": [],
+  "wishlistItems": [
+    {
+      "userId": "1BTI6SBZeLA",
+      "gameId": "16",
+      "id": "CS7Y0nugtyc"
+    }
+  ],
+  "orders": [
+    {
+      "userId": "cHt-5zIQL-c",
+      "items": [
+        {
+          "gameId": "17",
+          "title": "Detroit: Become Human",
+          "price": 39.99,
+          "image": "https://i.pinimg.com/1200x/02/57/82/02578205dfb67b5f3e216dc46c501d7d.jpg",
+          "quantity": 1
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Muhammed Sinan V",
+        "phone": "1234567890",
+        "addressLine": "Palakkad,Mannarkkad",
+        "city": "Mannarkkad",
+        "state": "Kerala",
+        "pinCode": "678582"
+      },
+      "subtotal": 39.99,
+      "shippingFee": 0,
+      "totalAmount": 39.99,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "orderStatus": "cancelled",
+      "createdAt": "2026-10-10T18:11:43.758Z",
+      "id": "cxmIbTLCMmQ"
+    },
+    {
+      "userId": "cHt-5zIQL-c",
+      "items": [
+        {
+          "gameId": "2",
+          "title": "Red Dead Redemption 2",
+          "price": 2799,
+          "image": "https://i.pinimg.com/1200x/3a/72/09/3a72092b358d0d47b48b4da48ec9fcc6.jpg",
+          "quantity": 1
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Muhammed Sinan V",
+        "phone": "1234567890",
+        "addressLine": "Palakkad,Mannarkkad",
+        "city": "Mannarkkad",
+        "state": "Kerala",
+        "pinCode": "678582"
+      },
+      "subtotal": 2799,
+      "shippingFee": 0,
+      "totalAmount": 2799,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "orderStatus": "cancelled",
+      "createdAt": "2026-10-11T06:18:38.661Z",
+      "id": "uekcIkvIK6A"
+    },
+    {
+      "userId": "fJI2dPV00eU",
+      "items": [
+        {
+          "gameId": "15",
+          "title": "Grand Theft Auto VI",
+          "price": 6799,
+          "image": "https://i.pinimg.com/736x/98/da/ef/98daef839b798e46881a2cac06312e4a.jpg",
+          "quantity": 2
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Muhammed Sinan V",
+        "phone": "7894561230",
+        "addressLine": "Palakkad,Mannarkkad",
+        "city": "Mannarkkad",
+        "state": "Kerala",
+        "pinCode": "678582"
+      },
+      "subtotal": 13598,
+      "shippingFee": 0,
+      "totalAmount": 13598,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "orderStatus": "cancelled",
+      "createdAt": "2026-10-11T06:58:46.111Z",
+      "id": "G_nL1O1pnmQ"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

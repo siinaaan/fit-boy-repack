@@ -205,11 +205,11 @@ const layout = [
     <div className="min-h-screen bg-zinc-950 text-white">
  
       {/* HERO SECTION */}
-      <section className="px-4 py-8 sm:px-6">
+      <section className="px-4 py-6 sm:py-8 sm:px-6">
 
         <div className="mx-auto w-full max-w-[1250px]">
 
-          <div className="relative aspect-video w-full overflow-hidden rounded-3xl border border-zinc-800 bg-[#101214] shadow-2xl">
+          <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-video w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-800 bg-[#101214] shadow-2xl">
 
             <div className="absolute inset-0">
 
@@ -287,15 +287,15 @@ const layout = [
                   {/* FEATURED */}
 
                   {position.featured && (
-                    <div className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/80 via-transparent to-transparent pb-[12%]">
+                    <div className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/80 via-transparent to-transparent pb-[10%] sm:pb-[12%]">
 
-                      <div className="text-center">
+                      <div className="text-center px-1">
 
-                        <p className="text-[8px] font-bold uppercase tracking-[0.3em] text-amber-400 sm:text-xs">
+                        <p className="text-[7px] font-bold uppercase tracking-[0.25em] text-amber-400 sm:text-xs">
                           Featured
                         </p>
 
-                        <h2 className="mt-1 text-sm font-bold sm:text-xl md:text-2xl">
+                        <h2 className="mt-0.5 sm:mt-1 text-[11px] font-bold sm:text-xl md:text-2xl truncate max-w-full">
                           {game.title}
                         </h2>
 
@@ -309,13 +309,13 @@ const layout = [
             })}
 
             {/* HERO BRAND */}
-            <div className="absolute bottom-6 left-6 z-30 sm:bottom-8 sm:left-8">
+            <div className="absolute bottom-3 left-3 z-30 sm:bottom-8 sm:left-8">
 
-              <p className="text-[9px] font-semibold uppercase tracking-[0.35em] text-amber-500 sm:text-xs">
+              <p className="text-[8px] font-semibold uppercase tracking-[0.3em] text-amber-500 sm:text-xs">
                 FitBoy Repacks
               </p>
 
-              <h1 className="mt-1 text-xl font-black sm:text-3xl md:text-4xl">
+              <h1 className="mt-0.5 sm:mt-1 text-sm font-black sm:text-2xl md:text-3xl lg:text-4xl">
                 Your next game
                 <br />
                 starts here.
@@ -328,7 +328,7 @@ const layout = [
               onClick={() =>
                 navigate("/games")
               }
-              className="absolute bottom-6 right-6 z-30 rounded-full  backdrop-blur-lg px-5 py-2.5 text-sm font-semibold text-emerald-400 transition hover:scale-105 hover:bg-zinc-800 sm:bottom-8 sm:right-8 sm:px-7 sm:py-3"
+              className="absolute bottom-3 right-3 z-30 rounded-full backdrop-blur-lg px-3 py-1.5 text-xs font-semibold text-emerald-400 transition hover:scale-105 hover:bg-zinc-800 sm:bottom-8 sm:right-8 sm:px-7 sm:py-3 sm:text-sm"
             >
               Browse Games
             </button>
@@ -340,19 +340,19 @@ const layout = [
       </section>
 
       
-      <section className="px-4 py-12 sm:px-6">
+      <section className="px-4 py-8 sm:py-12 sm:px-6">
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="mb-6 flex items-end justify-between">
+          <div className="mb-6 flex items-end justify-between gap-4">
 
             <div>
 
-              <p className="text-sm font-semibold uppercase tracking-widest text-amber-500">
+              <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-amber-500">
                 Popular
               </p>
 
-              <h2 className="mt-1 text-3xl font-bold">
+              <h2 className="mt-1 text-2xl sm:text-3xl font-bold">
                 Trending Games
               </h2>
 
@@ -363,7 +363,7 @@ const layout = [
               onClick={() =>
                 navigate("/games")
               }
-              className="text-sm font-semibold text-zinc-400 transition hover:text-white"
+              className="text-xs sm:text-sm font-semibold text-zinc-400 transition hover:text-white"
             >
               View All →
             </button>
@@ -388,23 +388,23 @@ const layout = [
       </section>
 
     
-      <section className="px-4 py-12 sm:px-6">
+      <section className="px-4 py-8 sm:py-12 sm:px-6">
 
         <div className="mx-auto max-w-7xl">
 
           <div className="mb-6">
 
-            <p className="text-sm font-semibold uppercase tracking-widest text-amber-500">
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-amber-500">
               Explore
             </p>
 
-            <h2 className="mt-1 text-3xl font-bold">
+            <h2 className="mt-1 text-2xl sm:text-3xl font-bold">
               Browse Categories
             </h2>
 
           </div>
 
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
 
             {categories.map(
               (category) => (
@@ -419,7 +419,7 @@ const layout = [
                       )}`
                     )
                   }
-                  className="group relative h-40 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900"
+                  className="group relative h-28 sm:h-40 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900"
                 >
 
                   {category.image ? (
@@ -434,7 +434,7 @@ const layout = [
 
                   <div className="absolute inset-0 bg-black/50 transition group-hover:bg-black/30" />
 
-                  <h3 className="absolute inset-0 flex items-center justify-center text-xl font-bold">
+                  <h3 className="absolute inset-0 flex items-center justify-center text-base sm:text-xl font-bold px-2 text-center">
                     {category.name}
                   </h3>
 
@@ -450,17 +450,17 @@ const layout = [
       </section>
 
 
-      <section className="px-4 py-12 sm:px-6">
+      <section className="px-4 py-8 sm:py-12 sm:px-6">
 
         <div className="mx-auto max-w-7xl">
 
           <div className="mb-6">
 
-            <p className="text-sm font-semibold uppercase tracking-widest text-amber-500">
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-amber-500">
               Discover
             </p>
 
-            <h2 className="mt-1 text-3xl font-bold">
+            <h2 className="mt-1 text-2xl sm:text-3xl font-bold">
               More Games
             </h2>
 
@@ -486,27 +486,27 @@ const layout = [
       
 
 
-      <section className="px-4 py-16 sm:px-6">
+      <section className="px-4 py-12 sm:py-16 sm:px-6">
 
         <div className="mx-auto max-w-7xl">
 
-          <div className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 px-6 py-16 text-center sm:px-12">
+          <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-800 bg-zinc-900 px-4 py-12 text-center sm:px-12 sm:py-16">
 
             <div className="absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-amber-500/10 blur-[100px]" />
 
             <div className="relative">
 
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-500">
+              <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.3em] text-red-500">
                 Ready to play?
               </p>
 
-              <h2 className="mt-3 text-4xl font-black sm:text-5xl">
+              <h2 className="mt-3 text-2xl sm:text-4xl md:text-5xl font-black">
                 Find your next level 
                 <br/>
                 gaming experience.
               </h2>
 
-              <p className="mx-auto mt-4 max-w-2xl text-zinc-400">
+              <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-zinc-400">
                 Explore our growing collection of
                 games and build your digital library.
               </p>
@@ -516,7 +516,7 @@ const layout = [
                 onClick={() =>
                   navigate("/games")
                 }
-                className="mt-8 rounded-xl bg-amber-500 px-8 py-3 font-bold text-black transition hover:scale-105 hover:bg-amber-400"
+                className="mt-6 sm:mt-8 rounded-xl bg-red-500 px-6 py-2.5 sm:px-8 sm:py-3 font-bold text-black transition hover:scale-105 hover:bg-amber-400 text-sm sm:text-base"
               >
                 Explore All Games
               </button>

@@ -209,18 +209,18 @@ function Library() {
   );
 
   return (
-    <div className="min-h-screen bg-zinc-950 p-8 text-white">
+    <div className="min-h-screen bg-zinc-950 p-4 sm:p-6 md:p-8 text-white">
 
       <div className="mx-auto max-w-7xl">
 
 
-        <div className="mb-10">
+        <div className="mb-6 sm:mb-10">
 
-          <h1 className="text-4xl font-bold">
+          <h1 className="text-3xl sm:text-4xl font-bold">
             Library
           </h1>
 
-          <p className="mt-2 text-zinc-400">
+          <p className="mt-2 text-sm sm:text-base text-zinc-400">
             Your purchased games
           </p>
 
@@ -229,13 +229,13 @@ function Library() {
 
         {purchasedGames.length === 0 ? (
 
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-12 text-center">
+          <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 sm:p-12 text-center">
 
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-xl sm:text-2xl font-semibold">
               Your library is empty
             </h2>
 
-            <p className="mt-3 text-zinc-400">
+            <p className="mt-3 text-sm sm:text-base text-zinc-400">
               Games you purchase will appear here.
             </p>
 
@@ -244,7 +244,7 @@ function Library() {
               onClick={() =>
                 navigate("/games")
               }
-              className="mt-6 rounded-lg bg-amber-500 px-6 py-3 font-semibold text-black transition hover:bg-amber-400"
+              className="mt-6 rounded-lg bg-amber-500 px-6 py-3 font-semibold text-black transition hover:bg-amber-400 text-sm sm:text-base"
             >
               Browse Games
             </button>
@@ -282,7 +282,7 @@ function Library() {
                     <img
                       src={game.image?.[0]}
                       alt={game.title}
-                      className="h-72 w-full object-cover transition duration-500 group-hover:scale-105"
+                      className="h-60 sm:h-72 w-full object-cover transition duration-500 group-hover:scale-105"
                     />
 
                     <div className="absolute right-3 top-3 rounded-full bg-green-500 px-3 py-1 text-xs font-bold text-black">
@@ -292,24 +292,24 @@ function Library() {
                   </div>
 
 
-                  <div className="p-5">
+                  <div className="p-4 sm:p-5">
 
-                    <h2 className="truncate text-xl font-bold">
+                    <h2 className="truncate text-lg sm:text-xl font-bold">
                       {game.title}
                     </h2>
 
-                    <p className="mt-2 text-sm text-zinc-400">
+                    <p className="mt-1 sm:mt-2 text-sm text-zinc-400">
                       {game.category}
                     </p>
 
-                    <p className="mt-3 text-sm text-zinc-500">
+                    <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-zinc-500">
                       Digital Copy
                     </p>
 
 
                     <button
                       type="button"
-                      className="mt-5 w-full rounded-lg border border-green-500 px-4 py-3 font-semibold text-green-400 transition hover:bg-green-500 hover:text-black"
+                      className="mt-4 sm:mt-5 w-full rounded-lg border border-green-500 px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-green-400 transition hover:bg-green-500 hover:text-black"
                     >
                       Download
                     </button>
@@ -319,7 +319,7 @@ function Library() {
                       onClick={() =>
                         openRemoveModal(game)
                       }
-                      className="mt-3 w-full rounded-lg border border-red-600 px-4 py-3 font-semibold text-red-500 transition hover:bg-red-600 hover:text-white"
+                      className="mt-2.5 sm:mt-3 w-full rounded-lg border border-red-600 px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-red-500 transition hover:bg-red-600 hover:text-white"
                     >
                       Remove from Library
                     </button>
@@ -341,9 +341,9 @@ function Library() {
       {/* REMOVE CONFIRMATION */}
       {showRemoveModal && selectedGame && (
 
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 sm:p-6">
 
-          <div className="w-full max-w-md rounded-2xl border border-zinc-700 bg-zinc-900 p-6 shadow-2xl">
+          <div className="w-full max-w-md rounded-2xl border border-zinc-700 bg-zinc-900 p-4 sm:p-6 shadow-2xl">
 
             <h2 className="text-2xl font-bold text-white">
               Remove Game?
