@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
+import { getAllOrders } from "../api/orderApi";
 import { getGames } from "../api/gameApi";
 import GameCard from "../components/GameCard";
 
@@ -15,6 +16,11 @@ function LandingPage() {
   } = useQuery({
     queryKey: ["games"],
     queryFn: getGames,
+  });
+
+  const {data: orders = []} = useQuery({
+    queryKey: ["allOrders"],
+    queryFn: getAllOrders,
   });
 
 
@@ -35,6 +41,23 @@ function LandingPage() {
       </div>
     );
   }
+
+  const trendingGames = [...games]
+  .map((game)=>{
+    const purchaseCount = orders.filter(
+      (order) => order.orderStatus?.toLowerCase() !== "cancelled"
+    )
+    .flatMap((order)=>order.items || [])
+    .filter((item) => String(item.gameId)=== String(game.id))
+    .reduce((total,item)=> total+Number(item.quantity || 1),0);
+
+
+  return{
+    ...game,purchaseCount,
+  };
+}) .filter((game) => game.purchaseCount > 0)
+.sort((a,b)=> b.purchaseCount - a.purchaseCount)
+.slice(0,4);
 
 
   const heroGames = games.slice(0, 17);
@@ -157,7 +180,9 @@ const layout = [
 ];
 
   // TRENDING GAMES / MORE GAMES / CATEGORIES
-  const trendingGames = games.slice(14, 18);
+  {trendingGames.map((game)=>{
+    <GameCard key={game.id} game={game} />
+  })}
 
   const moreGames = games.slice(11, 15);
 
@@ -325,9 +350,10 @@ const layout = [
 
             <button
               type="button"
-              onClick={() =>
+              onClick={() =>{
+                window.scrollTo(0,0)
                 navigate("/games")
-              }
+              }}
               className="absolute bottom-3 right-3 z-30 rounded-full backdrop-blur-lg px-3 py-1.5 text-xs font-semibold text-emerald-400 transition hover:scale-105 hover:bg-zinc-800 sm:bottom-8 sm:right-8 sm:px-7 sm:py-3 sm:text-sm"
             >
               Browse Games
@@ -360,9 +386,10 @@ const layout = [
 
             <button
               type="button"
-              onClick={() =>
+              onClick={() =>{
+                window.scrollTo(0,0)
                 navigate("/games")
-              }
+              }}
               className="text-xs sm:text-sm font-semibold text-zinc-400 transition hover:text-white"
             >
               View All →
@@ -513,9 +540,10 @@ const layout = [
 
               <button
                 type="button"
-                onClick={() =>
+                onClick={() =>{
+                  window.scrollTo(0,0)
                   navigate("/games")
-                }
+                }}
                 className="mt-6 sm:mt-8 rounded-xl bg-red-500 px-6 py-2.5 sm:px-8 sm:py-3 font-bold text-black transition hover:scale-105 hover:bg-amber-400 text-sm sm:text-base"
               >
                 Explore All Games

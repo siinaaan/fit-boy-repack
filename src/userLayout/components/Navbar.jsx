@@ -71,83 +71,19 @@ function Navbar() {
   };
 
   return (
-    <nav
-      className="
-        sticky
-        top-0
-        z-50
-        w-full
-        border-b
-        border-emerald-500/20
-        bg-[#050b12]/95
-        backdrop-blur-xl
-        shadow-[0_4px_25px_rgba(16,185,129,0.05)]
-      "
-    >
-      <div
-        className="
-          flex
-          flex-nowrap
-          h-20
-          sm:h-24
-          w-full
-          items-center
-          justify-between
-          gap-2
-          sm:gap-4
-          lg:gap-6
-          px-3
-          sm:px-6
-          lg:px-10
-        "
-      >
+    <nav className="fixed top-0 left-0 z-50 w-full border-b border-emerald-500/20 bg-[#050b12]/95 backdrop-blur-xl shadow-[0_4px_25px_rgba(16,185,129,0.05)]">
+      <div className=" flex flex-nowrap h-20 sm:h-24 w-full items-center justify-between gap-2 sm:gap-4 lg:gap-6 px-3 sm:px-6 lg:px-10">
         <Link
           to="/"
           onClick={() => setIsMobileMenuOpen(false)}
-          className="
-            group
-            flex
-            shrink-0
-            items-center
-            gap-2
-            sm:gap-3
-          "
+          className=" group flex shrink-0 items-center gap-2 sm:gap-3"
         >
-          <img
-            src={fitboy}
-            alt="FitBoy Repacks"
-            className="
-              h-9
-              w-9
-              min-[400px]:h-10
-              min-[400px]:w-10
-              sm:h-14
-              sm:w-14
-              shrink-0
-              rounded-lg
-              object-cover
-              ring-1
-              ring-emerald-400/30
-              transition-all
-              duration-300
-              group-hover:ring-emerald-400
-              group-hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]
-            "
+          <img src={fitboy} alt="FitBoy Repacks"
+            className="h-9 w-9 min-[400px]:h-10 min-[400px]:w-10 sm:h-14 sm:w-14 shrink-0 rounded-lg object-cover ring-1 ring-emerald-400/30 transition-all duration-300 group-hover:ring-emerald-400 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
           />
 
           <div className="hidden min-[360px]:block min-w-0">
-            <h1
-              className="
-                text-xs
-                min-[480px]:text-sm
-                sm:text-lg
-                font-black
-                tracking-wide
-                text-emerald-400
-                drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]
-                whitespace-nowrap
-              "
-            >
+            <h1 className="text-xs min-[480px]:text-sm sm:text-lg font-black tracking-wide text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)] whitespace-nowrap">
               <span>FitBoy</span>
               <span className="hidden min-[480px]:inline"> Repacks</span>
             </h1>
@@ -160,40 +96,14 @@ function Navbar() {
 
         <Link
           to="/"
-          className="
-            group
-            relative
-            hidden
-            lg:block
-            px-3
-            py-2
-            text-sm
-            font-medium
-            text-emerald-400
-            transition-all
-            duration-300
-            hover:text-emerald-300
-          "
+          className="group relative hidden lg:block px-3 py-2 text-sm font-medium text-emerald-400 transition-all duration-300 hover:text-emerald-300"
         >
           Home
           <span
-            className="
-              absolute
-              bottom-0
-              left-1/2
-              h-[2px]
-              w-0
-              -translate-x-1/2
-              bg-emerald-400
-              shadow-[0_0_8px_rgba(16,185,129,0.8)]
-              transition-all
-              duration-300
-              group-hover:w-full
-            "
+            className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)] transition-all duration-300 group-hover:w-full"
           />
         </Link>
 
-        {/* SEARCH BAR (RESPONSIVE: VISIBLE ON ALL BREAKPOINTS) */}
         <div className="relative flex-1 min-w-0 max-w-md lg:w-full">
           <form
             onSubmit={handleSearch}

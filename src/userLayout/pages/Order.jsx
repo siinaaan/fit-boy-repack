@@ -18,7 +18,6 @@ import {
   updateOrder,
 } from "../api/orderApi";
 
-// Order tracking steps
 const orderSteps = [
   "placed",
   "processing",
@@ -27,7 +26,6 @@ const orderSteps = [
   "delivered",
 ];
 
-// Order Timeline Component
 function OrderTimeline({ status }) {
   const normalizedStatus = String(
     status || "placed"
@@ -130,7 +128,6 @@ function OrderTimeline({ status }) {
   );
 }
 
-// My Orders Page
 function Orders() {
   const user = useSelector(
     (state) => state.auth.user
@@ -138,11 +135,9 @@ function Orders() {
 
   const queryClient = useQueryClient();
 
-  // Selected order for the confirmation modal
   const [selectedOrder, setSelectedOrder] =
     useState(null);
 
-  // Fetch the current user's orders
   const {
     data: orders = [],
     isLoading,
@@ -153,7 +148,6 @@ function Orders() {
     enabled: !!user?.id,
   });
 
-  // Cancel Order Mutation
   const cancelOrderMutation = useMutation({
     mutationFn: (orderId) =>
       updateOrder(orderId, {
@@ -184,7 +178,6 @@ function Orders() {
     },
   });
 
-  // Open confirmation modal
   const handleCancelOrder = (order) => {
     const status = String(
       order.orderStatus || "placed"
@@ -200,7 +193,6 @@ function Orders() {
     setSelectedOrder(order);
   };
 
-  // Confirm cancellation
   const confirmCancelOrder = () => {
     if (!selectedOrder || cancelOrderMutation.isPending) {
       return;
@@ -222,7 +214,7 @@ function Orders() {
     cancelOrderMutation.mutate(selectedOrder.id);
   };
 
-  // Loading State
+
   if (isLoading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center bg-[#050b12] text-emerald-400">
@@ -235,7 +227,7 @@ function Orders() {
     );
   }
 
-  // Error State
+
   if (isError) {
     return (
       <div className="min-h-[60vh] bg-[#050b12] p-8 text-center text-red-400">
@@ -248,7 +240,8 @@ function Orders() {
     <section className="min-h-screen bg-[#050b12] px-4 py-10 text-white sm:px-8">
       <div className="mx-auto max-w-6xl">
 
-        {/* Page Header */}
+
+
         <div className="mb-8 flex items-center gap-3">
           <Package
             size={32}
@@ -266,7 +259,7 @@ function Orders() {
           </div>
         </div>
 
-        {/* Empty State */}
+
         {orders.length === 0 ? (
           <div className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-10 text-center">
             <Package
@@ -284,7 +277,9 @@ function Orders() {
           </div>
         ) : (
           <div className="space-y-5">
-            {orders.map((order) => {
+            {[...orders]
+              .sort((a,b)=> new Date(b.createdAt || 0) - new Date(a.createdAt || 0))
+              .map((order) => {
               const status = String(
                 order.orderStatus || "placed"
               ).toLowerCase();

@@ -561,6 +561,118 @@
       "orderStatus": "cancelled",
       "createdAt": "2026-10-12T11:00:29.799Z",
       "id": "xVf1nOc61SM"
+    },
+    {
+      "userId": "cHt-5zIQL-c",
+      "items": [
+        {
+          "gameId": "15",
+          "title": "Grand Theft Auto VI",
+          "price": 6799,
+          "image": "https://i.pinimg.com/736x/98/da/ef/98daef839b798e46881a2cac06312e4a.jpg",
+          "quantity": 1
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Muhammed Sinan V",
+        "phone": "1234567890",
+        "addressLine": "Palakkad,Mannarkkad",
+        "city": "Mannarkkad",
+        "state": "Kerala",
+        "pinCode": "678582"
+      },
+      "subtotal": 6799,
+      "shippingFee": 0,
+      "totalAmount": 6799,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "orderStatus": "cancelled",
+      "createdAt": "2026-10-16T04:20:36.872Z",
+      "id": "glzdyBZ7K1A"
+    },
+    {
+      "userId": "cHt-5zIQL-c",
+      "items": [
+        {
+          "gameId": "2",
+          "title": "Red Dead Redemption 2",
+          "price": 2799,
+          "image": "https://i.pinimg.com/1200x/3a/72/09/3a72092b358d0d47b48b4da48ec9fcc6.jpg",
+          "quantity": 1
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Muhammed Sinan V",
+        "phone": "1234567890",
+        "addressLine": "Palakkad,Mannarkkad",
+        "city": "Mannarkkad",
+        "state": "Kerala",
+        "pinCode": "678582"
+      },
+      "subtotal": 2799,
+      "shippingFee": 0,
+      "totalAmount": 2799,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "orderStatus": "placed",
+      "createdAt": "2026-10-16T08:43:26.262Z",
+      "id": "JqhDqaKD1x4"
+    },
+    {
+      "userId": "cHt-5zIQL-c",
+      "items": [
+        {
+          "gameId": "15",
+          "title": "Grand Theft Auto VI",
+          "price": 6799,
+          "image": "https://i.pinimg.com/736x/98/da/ef/98daef839b798e46881a2cac06312e4a.jpg",
+          "quantity": 5
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Muhammed Sinan V",
+        "phone": "1234567890",
+        "addressLine": "Palakkad,Mannarkkad",
+        "city": "Mannarkkad",
+        "state": "Kerala",
+        "pinCode": "678582"
+      },
+      "subtotal": 33995,
+      "shippingFee": 0,
+      "totalAmount": 33995,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "orderStatus": "placed",
+      "createdAt": "2026-10-16T09:26:24.445Z",
+      "id": "BUmDXBkVcaE"
+    },
+    {
+      "userId": "cHt-5zIQL-c",
+      "items": [
+        {
+          "gameId": "14",
+          "title": "EA Sports FC 27",
+          "price": 6799,
+          "image": "https://i.pinimg.com/736x/34/80/1d/34801de67269cddf4f256716e0cf59e1.jpg",
+          "quantity": 1
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Nisam",
+        "phone": "7894561230",
+        "addressLine": "Kearala/india",
+        "city": "palakkad",
+        "state": "kerala",
+        "pinCode": "678582"
+      },
+      "subtotal": 6799,
+      "shippingFee": 0,
+      "totalAmount": 6799,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "orderStatus": "placed",
+      "createdAt": "2026-10-16T14:25:31.774Z",
+      "id": "Pc0ulqNuHOU"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

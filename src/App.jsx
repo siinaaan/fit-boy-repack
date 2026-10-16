@@ -17,6 +17,8 @@ import UserSideRoute from "./userLayout/components/UserSideRoute";
 import AdminProtectedRoute from "./adminLayout/components/AdminProtectedRoute";
 import AdminLayout from "./adminLayout/layouts/AdminLayout";
 import Dashboard from "./adminLayout/pages/Dashboard";
+import Products from "./adminLayout/pages/Products";
+
 function App() {
   return (
     <Routes>
@@ -41,6 +43,7 @@ function App() {
       <Route element={<AdminProtectedRoute />}>
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
+          <Route path="products" element={<Products />} />
         </Route>
       </Route>
     </Routes>

@@ -28,3 +28,8 @@ export const deleteOrder = async (orderId) => {
   );
   return response.data;
 };
+
+export const getAllOrders = async() =>  {
+  const response = await axios.get(`${API_URL}/orders`);
+  return response.data;
+}

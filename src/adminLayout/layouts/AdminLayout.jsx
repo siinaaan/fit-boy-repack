@@ -1,7 +1,7 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../userLayout/features/authSlice";
-import { User, Boxes } from "lucide-react";
+import { Package, Users, ShoppingBag, Gamepad2 } from "lucide-react";
 
 function AdminLayout() {
   const user = useSelector((state) => state.auth.user);
@@ -28,14 +28,20 @@ function AdminLayout() {
           <Link to="/admin">
           
             Dashboard</Link>
-          <Link to="/admin/products" >Products</Link>
+          <Link to="/admin/products" 
+          className="flex gap-1 items-center">
+          <Gamepad2 size={18} />
+          <span>
+            Games
+          </span>
+          </Link>
           <Link to="/admin/users" className="flex gap-1 items-center">
-          <User size={18} />
+          <Users size={18} />
           <span>Users</span>
           </Link>
           <Link to="/admin/orders" 
           className="flex gap-1 items-center">
-          <Boxes size={18}/>
+          <ShoppingBag size={18}/>
           <span>Orders</span>
           </Link>
         </nav>
