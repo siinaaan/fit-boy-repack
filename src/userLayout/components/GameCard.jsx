@@ -4,9 +4,8 @@ import { Heart } from "lucide-react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 
-import useLibrary from "../hooks/useLibrary";
 
-import { addToCart } from "../features/cartSlice";
+import { addToCart,updateCartQuantity } from "../features/cartSlice";
 import {
   addToWishlist,
   removeFromWishlist,
@@ -15,6 +14,7 @@ import {
 import {
   addCartItem,
   getCartItems,
+  updateCartItem,
 } from "../api/cartApi";
 
 import {
@@ -35,9 +35,6 @@ function GameCard({ game }) {
     (state) => state.wishlist.items
   );
 
-  const { isOwned } = useLibrary();
-
-  const owned = isOwned(game.id);
 
   const isWishlisted = wishlistItems.some(
     (item) =>
@@ -62,9 +59,13 @@ function GameCard({ game }) {
       );
 
       if (existingItem) {
-        toast.error(
-          `${game.title} is already in your cart!`
-        );
+        const updatedItems = await updateCartItem(
+          existingItem.id,
+          {
+            quantity: Number(existingItem.quantity || 0) +1,
+          }
+        )
+        dispatch(updateCartQuantity(updatedItems))
         return;
       }
 
@@ -207,17 +208,7 @@ function GameCard({ game }) {
           ₹ {game.price}
         </p>
 
-        {owned ? (
-
-          <button
-            type="button"
-            onClick={() => navigate("/library")}
-            className="mt-3 sm:mt-4 w-full rounded-lg border border-green-500 px-4 py-2 text-sm sm:text-base font-semibold text-green-400 transition hover:bg-green-500 hover:text-black"
-          >
-            ✓ In Library
-          </button>
-
-        ) : (
+        
 
           <button
             type="button"
@@ -227,7 +218,7 @@ function GameCard({ game }) {
             Add to Cart
           </button>
 
-        )}
+        
 
       </div>
 

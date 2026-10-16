@@ -23,8 +23,7 @@ function LoginPage() {
       const users = await getUsers();
 
       const user = users.find(
-        (user) =>
-          user.email === email && user.password === password
+        (user) => user.email === email && user.password === password,
       );
 
       if (!user) {
@@ -35,11 +34,16 @@ function LoginPage() {
     },
 
     onSuccess: (user) => {
+
       dispatch(setUser(user));
 
       toast.success("Logged in successfully!");
 
-      navigate("/");
+      if (user.role === "admin") {
+        navigate("/admin", { replace: true });
+      } else {
+        navigate("/", {replace: true});
+      }
     },
 
     onError: (error) => {
@@ -59,11 +63,8 @@ function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-8">
-     
       <div className="flex w-full max-w-5xl items-center gap-16">
-
         <div className="hidden flex-1 text-center lg:block">
-
           <h1
             className="
               text-5xl
@@ -76,14 +77,8 @@ function LoginPage() {
             FitBoy Repack
           </h1>
 
-          <p className="mt-3 text-slate-400">
-            Your digital gaming universe
-          </p>
-
+          <p className="mt-3 text-slate-400">Your digital gaming universe</p>
         </div>
-
-    ``
-        {/* RIGHT SIDE - LOGIN CARD */}
 
         <form
           onSubmit={handleSubmit}
@@ -100,11 +95,7 @@ function LoginPage() {
             backdrop-blur-xl
           "
         >
-
-          {/* Login Heading */}
-
           <div className="mb-6">
-
             <h2 className="text-2xl sm:text-3xl font-bold text-white">
               Welcome back
             </h2>
@@ -112,14 +103,9 @@ function LoginPage() {
             <p className="mt-2 text-sm text-slate-400">
               Sign in to continue your gaming journey.
             </p>
-
           </div>
 
-
-          {/* EMAIL */}
-
           <div className="mb-4">
-
             <label
               className="
                 mb-2
@@ -157,14 +143,9 @@ function LoginPage() {
                 focus:shadow-[0_0_15px_rgba(16,185,129,0.15)]
               "
             />
-
           </div>
 
-
-          {/* PASSWORD */}
-
           <div className="mb-4">
-
             <label
               className="
                 mb-2
@@ -202,11 +183,7 @@ function LoginPage() {
                 focus:shadow-[0_0_15px_rgba(16,185,129,0.15)]
               "
             />
-
           </div>
-
-
-          {/* LOGIN BUTTON */}
 
           <button
             type="submit"
@@ -229,13 +206,8 @@ function LoginPage() {
               disabled:opacity-50
             "
           >
-            {loginMutation.isPending
-              ? "Logging in..."
-              : "Login"}
+            {loginMutation.isPending ? "Logging in..." : "Login"}
           </button>
-
-
-          {/* ERROR MESSAGE */}
 
           {error && (
             <div
@@ -255,13 +227,8 @@ function LoginPage() {
             </div>
           )}
 
-
-          {/* REGISTER LINK */}
-
           <p className="mt-6 text-center text-sm text-slate-400">
-
             Don't have an account?{" "}
-
             <Link
               to="/register"
               className="
@@ -274,11 +241,8 @@ function LoginPage() {
             >
               Create account
             </Link>
-
           </p>
-
         </form>
-
       </div>
     </div>
   );

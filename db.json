@@ -2,9 +2,10 @@
   "users": [
     {
       "name": "Muhammed Sinan V",
-      "email": "thangan@gmail",
+      "email": "thangan@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
+      "role": "admin",
       "id": "MxyAfQ2Nkxw"
     },
     {
@@ -12,6 +13,7 @@
       "email": "siinaaan@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
+      "role": "user",
       "id": "l3PbXxQdDTc"
     },
     {
@@ -19,14 +21,16 @@
       "email": "nisam123@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
+      "role": "user",
       "id": "cHt-5zIQL-c"
     },
     {
-      "name": "USER1",
-      "email": "user1@gmail.com",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": "fJI2dPV00eU"
+      "name": "ADMIN1",
+      "email": "admin1@gmail.com",
+      "password": "246810",
+      "confirmPassword": "246810",
+      "role": "admin",
+      "id": "c2nxoFkfnjE"
     }
   ],
   "games": [
@@ -403,6 +407,160 @@
       "orderStatus": "cancelled",
       "createdAt": "2026-10-11T06:58:46.111Z",
       "id": "G_nL1O1pnmQ"
+    },
+    {
+      "userId": "fJI2dPV00eU",
+      "items": [
+        {
+          "gameId": "1",
+          "title": "Cyberpunk 2077",
+          "price": 3799,
+          "image": "https://i.pinimg.com/736x/e6/40/7f/e6407fc9aafc4166a24c7354e26bd956.jpg",
+          "quantity": 1
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Muhammed Sinan V",
+        "phone": "1234567890",
+        "addressLine": "Palakkad,Mannarkkad",
+        "city": "Mannarkkad",
+        "state": "Kerala",
+        "pinCode": "678582"
+      },
+      "subtotal": 3799,
+      "shippingFee": 0,
+      "totalAmount": 3799,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "orderStatus": "cancelled",
+      "createdAt": "2026-10-12T06:52:34.609Z",
+      "id": "aAp_sqjEuEg"
+    },
+    {
+      "userId": "fJI2dPV00eU",
+      "items": [
+        {
+          "gameId": "1",
+          "title": "Cyberpunk 2077",
+          "price": 3799,
+          "image": "https://i.pinimg.com/736x/e6/40/7f/e6407fc9aafc4166a24c7354e26bd956.jpg",
+          "quantity": 1
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Muhammed Sinan V",
+        "phone": "1234567890",
+        "addressLine": "Palakkad,Mannarkkad",
+        "city": "Mannarkkad",
+        "state": "Kerala",
+        "pinCode": "678582"
+      },
+      "subtotal": 3799,
+      "shippingFee": 0,
+      "totalAmount": 3799,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "orderStatus": "cancelled",
+      "createdAt": "2026-10-12T09:14:31.166Z",
+      "id": "1d4DI7hsCsQ"
+    },
+    {
+      "userId": "fJI2dPV00eU",
+      "items": [
+        {
+          "gameId": "9",
+          "title": "Marvel's Spider-Man ",
+          "price": 4899,
+          "image": "https://i.pinimg.com/736x/ea/1a/cf/ea1acf089cf5a74959cda5f5a9fb0af1.jpg",
+          "quantity": 1
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Muhammed Sinan V",
+        "phone": "1234567890",
+        "addressLine": "Palakkad,Mannarkkad",
+        "city": "Mannarkkad",
+        "state": "Kerala",
+        "pinCode": "678582"
+      },
+      "subtotal": 4899,
+      "shippingFee": 0,
+      "totalAmount": 4899,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "orderStatus": "cancelled",
+      "createdAt": "2026-10-12T09:57:22.810Z",
+      "id": "4YCpLg9wutI"
+    },
+    {
+      "userId": "fJI2dPV00eU",
+      "items": [
+        {
+          "gameId": "7",
+          "title": "Resident Evil 4",
+          "price": 3399,
+          "image": "https://i.pinimg.com/736x/4f/a8/ad/4fa8ad58915c26d99472903a517bb156.jpg",
+          "quantity": 1
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Muhammed Sinan V",
+        "phone": "1234567890",
+        "addressLine": "Palakkad,Mannarkkad",
+        "city": "Mannarkkad",
+        "state": "Kerala",
+        "pinCode": "678582"
+      },
+      "subtotal": 3399,
+      "shippingFee": 0,
+      "totalAmount": 3399,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "orderStatus": "cancelled",
+      "createdAt": "2026-10-12T10:49:43.775Z",
+      "id": "ZsKvpt_rpEs"
+    },
+    {
+      "userId": "fJI2dPV00eU",
+      "items": [
+        {
+          "gameId": "18",
+          "title": "Grand Theft Auto: Vice City",
+          "price": 1999,
+          "image": "https://i.pinimg.com/736x/42/13/93/421393bfa9db848dba2b58c60f2efdd4.jpg",
+          "quantity": 1
+        },
+        {
+          "gameId": "17",
+          "title": "Detroit: Become Human",
+          "price": 3899,
+          "image": "https://i.pinimg.com/1200x/02/57/82/02578205dfb67b5f3e216dc46c501d7d.jpg",
+          "quantity": 1
+        },
+        {
+          "gameId": "14",
+          "title": "EA Sports FC 27",
+          "price": 6799,
+          "image": "https://i.pinimg.com/736x/34/80/1d/34801de67269cddf4f256716e0cf59e1.jpg",
+          "quantity": 2
+        }
+      ],
+      "shippingAddress": {
+        "fullName": "Muhammed Sinan V",
+        "phone": "1234567890",
+        "addressLine": "Palakkad,Mannarkkad",
+        "city": "Mannarkkad",
+        "state": "Kerala",
+        "pinCode": "678582"
+      },
+      "subtotal": 19496,
+      "shippingFee": 0,
+      "totalAmount": 19496,
+      "paymentMethod": "COD",
+      "paymentStatus": "pending",
+      "orderStatus": "cancelled",
+      "createdAt": "2026-10-12T11:00:29.799Z",
+      "id": "xVf1nOc61SM"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

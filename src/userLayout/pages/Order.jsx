@@ -299,7 +299,7 @@ function Orders() {
                   key={order.id}
                   className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5 sm:p-6"
                 >
-                  {/* Order Header */}
+
                   <div className="flex flex-col justify-between gap-4 border-b border-zinc-800 pb-4 sm:flex-row sm:items-start">
                     <div>
                       <p className="text-sm text-zinc-400">
@@ -342,7 +342,7 @@ function Orders() {
                     </div>
                   </div>
 
-                  {/* Ordered Games */}
+
                   <div className="mt-4 space-y-4">
                     {(order.items || []).map(
                       (item, index) => (
@@ -377,7 +377,7 @@ function Orders() {
                     )}
                   </div>
 
-                  {/* Shipping Address */}
+
                   {order.shippingAddress && (
                     <div className="mt-5 border-t border-zinc-800 pt-4">
                       <h3 className="mb-2 font-semibold">
@@ -402,7 +402,7 @@ function Orders() {
                     </div>
                   )}
 
-                  {/* Order Date */}
+
                   <p className="mt-4 text-xs text-zinc-500">
                     Ordered on:{" "}
                     {order.createdAt
@@ -412,13 +412,13 @@ function Orders() {
                       : "Date unavailable"}
                   </p>
 
-                  {/* Delivery Timeline */}
+
                   <OrderTimeline
                     status={order.orderStatus}
                   />
 
                   
-                      {/* Cancel Button */}
+
                       {canCancel && (
                         <button
                           type="button"
@@ -440,7 +440,7 @@ function Orders() {
         )}
       </div>
 
-      {/* Cancel Confirmation Modal */}
+
       {selectedOrder && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm"
@@ -460,7 +460,7 @@ function Orders() {
               event.stopPropagation()
             }
           >
-            {/* Close Button */}
+
             <div className="flex justify-end">
               <button
                 type="button"
@@ -473,7 +473,7 @@ function Orders() {
               </button>
             </div>
 
-            {/* Warning Icon */}
+
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-red-500/20 bg-red-500/10">
               <AlertTriangle
                 size={30}
@@ -481,7 +481,7 @@ function Orders() {
               />
             </div>
 
-            {/* Modal Heading */}
+
             <h2
               id="cancel-order-title"
               className="mt-5 text-center text-xl font-bold text-white"
@@ -489,7 +489,7 @@ function Orders() {
               Cancel this order?
             </h2>
 
-            {/* Confirmation Message */}
+
             <p
               id="cancel-order-description"
               className="mt-3 text-center text-sm leading-6 text-zinc-400"
@@ -505,7 +505,6 @@ function Orders() {
               This action cannot be undone from this page.
             </p>
 
-            {/* Modal Buttons */}
             <div className="mt-7 flex gap-3">
               <button
                 type="button"

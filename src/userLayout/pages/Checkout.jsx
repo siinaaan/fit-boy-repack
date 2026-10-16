@@ -69,7 +69,6 @@ function Checkout() {
     mutationFn: createOrder,
 
     onSuccess: async (order) => {
-      // The order has been created. Cart cleanup is a separate step.
       try {
         if (user && !gameId) {
           const currentCartItems = await getCartItems(user.id);
@@ -261,8 +260,6 @@ function Checkout() {
 
       paymentMethod,
 
-      // No real payment gateway is connected.
-      // Therefore, online demo payments are never marked as paid.
       paymentStatus: "pending",
       orderStatus: "placed",
 

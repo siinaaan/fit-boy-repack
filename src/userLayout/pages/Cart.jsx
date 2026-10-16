@@ -39,10 +39,10 @@ function Cart() {
     queryFn: getGames,
   });
 
-  // Update quantity in JSON Server and Redux
+
   const quantityMutation = useMutation({
     mutationFn: ({ id, quantity }) =>
-      updateCartItem(id, quantity),
+      updateCartItem(id, {quantity}),
 
     onSuccess: (updatedItem) => {
       dispatch(
@@ -63,13 +63,12 @@ function Cart() {
     },
   });
 
-  // Increase or decrease quantity
   const handleQuantityChange = (cartItem, change) => {
     const currentQuantity = Number(cartItem.quantity) || 1;
     const newQuantity = currentQuantity + change;
 
     if (newQuantity < 1) return;
-    if (quantityMutation.isPending) return;
+
 
     quantityMutation.mutate({
       id: cartItem.id,
@@ -77,7 +76,6 @@ function Cart() {
     });
   };
 
-  // Remove an item
   const handleRemoveItem = async (cartItem) => {
     try {
       await deleteCartItem(cartItem.id);
@@ -95,7 +93,7 @@ function Cart() {
     }
   };
 
-  // Clear the entire cart
+
   const handleClearCart = async () => {
     if (!user) {
       toast.error("Please login first.");
@@ -124,7 +122,7 @@ function Cart() {
     }
   };
 
-  // Proceed to checkout
+
   const handleCheckout = () => {
     if (!user) {
       toast.error("Please login to continue.");
@@ -140,7 +138,7 @@ function Cart() {
     navigate("/checkout");
   };
 
-  // Loading state
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-zinc-950 p-6 text-white">
@@ -149,7 +147,7 @@ function Cart() {
     );
   }
 
-  // Error state
+
   if (isError) {
     return (
       <div className="min-h-screen bg-zinc-950 p-6 text-white">
@@ -160,7 +158,7 @@ function Cart() {
     );
   }
 
-  // Empty cart
+
   if (cartItems.length === 0) {
     return (
       <div className="min-h-screen bg-zinc-950 p-6 text-white">
@@ -191,7 +189,7 @@ function Cart() {
     );
   }
 
-  // Calculate total price using quantity
+
   const total = cartItems.reduce((sum, cartItem) => {
     const game = games.find(
       (game) =>
@@ -205,7 +203,8 @@ function Cart() {
     return sum + Number(game.price) * quantity;
   }, 0);
 
-  // Calculate total number of copies
+
+
   const totalItems = cartItems.reduce(
     (sum, item) => sum + (Number(item.quantity) || 1),
     0
@@ -215,7 +214,7 @@ function Cart() {
     <div className="min-h-screen bg-zinc-950 p-4 text-white sm:p-6">
       <div className="mx-auto max-w-6xl">
 
-        {/* Header */}
+
         <div className="mb-6 flex items-center justify-between sm:mb-8">
           <h1 className="text-2xl font-bold sm:text-3xl">
             Your Cart
@@ -231,7 +230,7 @@ function Cart() {
           </button>
         </div>
 
-        {/* Cart Items */}
+
         <div className="space-y-4">
           {cartItems.map((cartItem) => {
             const game = games.find(
@@ -249,7 +248,7 @@ function Cart() {
                 key={cartItem.id}
                 className="flex flex-col justify-between gap-4 rounded-xl border border-zinc-800 bg-zinc-900 p-4 sm:flex-row sm:items-center sm:gap-5"
               >
-                {/* Game Details */}
+
                 <div className="flex min-w-0 flex-1 items-center gap-4">
                   <img
                     src={
@@ -275,10 +274,10 @@ function Cart() {
                     </p>
 
                     <p className="mt-1 text-xs text-zinc-500 sm:text-sm">
-                      Digital Copy
+                      Physical Copy
                     </p>
 
-                    {/* Quantity Controls */}
+
                     <div className="mt-3 flex items-center gap-3">
                       <span className="text-sm text-zinc-400">
                         Quantity
@@ -318,7 +317,7 @@ function Cart() {
                   </div>
                 </div>
 
-                {/* Item Subtotal and Remove */}
+
                 <div className="flex items-center justify-between border-t border-zinc-800 pt-3 sm:flex-col sm:items-end sm:justify-center sm:border-t-0 sm:pt-0">
                   <div className="sm:mb-4">
                     <p className="text-xs text-zinc-400 sm:text-right">
@@ -343,7 +342,7 @@ function Cart() {
           })}
         </div>
 
-        {/* Order Summary */}
+
         <div className="mt-8 flex justify-end">
           <div className="w-full max-w-md rounded-xl border border-zinc-800 bg-zinc-900 p-4 sm:p-6">
             <h2 className="text-xl font-bold sm:text-2xl">

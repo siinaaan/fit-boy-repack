@@ -19,9 +19,10 @@ export const addCartItem = async (cartItem) => {
   return response.data;
 };
 
-export const updateCartItem = async (id, quantity) => {
+export const updateCartItem = async (id, updates) => {
   const response = await axios.patch(
-    `${API_URL}/cartItems/${id}`,{quantity}
+    `${API_URL}/cartItems/${id}`,
+    updates
   );
 
   return response.data;

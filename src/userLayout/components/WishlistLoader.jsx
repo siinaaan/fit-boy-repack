@@ -12,7 +12,6 @@ function WishlistLoader() {
     (state) => state.auth.user
   );
 
-  console.log("WishlistLoader user:", user);
 
   const {
     data: wishlistItems,
@@ -25,7 +24,6 @@ function WishlistLoader() {
     enabled: !!user?.id,
   });
 
-  console.log("Wishlist API data:", wishlistItems);
 
   useEffect(() => {
     if(!user?.id){
@@ -39,7 +37,7 @@ function WishlistLoader() {
   }, [user?.id,wishlistItems, dispatch]);
 
   if (isLoading) {
-    console.log("Loading wishlist...");
+    <h2>Loading...</h2>
   }
 
   if (isError) {

@@ -56,10 +56,10 @@ function OrderSuccess() {
           </button>
 
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/orders")}
             className="rounded-lg border border-zinc-700 px-6 py-3 font-semibold transition hover:bg-zinc-800"
           >
-            Home
+            My Orders
           </button>
 
         </div>

@@ -12,7 +12,11 @@ import OrderSuccess from "./userLayout/pages/OrderSuccess";
 import Orders from "./userLayout/pages/Order";
 import LandingPage from "./userLayout/pages/LandingPage";
 import PublicRoute from "./userLayout/components/PublicRoute";
+import UserSideRoute from "./userLayout/components/UserSideRoute";
 
+import AdminProtectedRoute from "./adminLayout/components/AdminProtectedRoute";
+import AdminLayout from "./adminLayout/layouts/AdminLayout";
+import Dashboard from "./adminLayout/pages/Dashboard";
 function App() {
   return (
     <Routes>
@@ -21,15 +25,23 @@ function App() {
         <Route path="/register" element={<Register />} />
       </Route>
 
-      <Route path="/" element={<Home />}>
-        <Route index element={<LandingPage />} />
-        <Route path="games" element={<Games />} />
-        <Route path="games/:id" element={<GameDetails />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="wishlist" element={<Wishlist />} />
-        <Route path="checkout" element={<Checkout />} />
-        <Route path="order-success" element={<OrderSuccess />} />
-        <Route path="orders" element={<Orders />} />
+      <Route element={<UserSideRoute />}>
+        <Route path="/" element={<Home />}>
+          <Route index element={<LandingPage />} />
+          <Route path="games" element={<Games />} />
+          <Route path="games/:id" element={<GameDetails />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="wishlist" element={<Wishlist />} />
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="order-success" element={<OrderSuccess />} />
+          <Route path="orders" element={<Orders />} />
+        </Route>
+      </Route>
+
+      <Route element={<AdminProtectedRoute />}>
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Dashboard />} />
+        </Route>
       </Route>
     </Routes>
   );

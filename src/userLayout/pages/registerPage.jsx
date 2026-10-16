@@ -41,7 +41,6 @@ function RegisterPage() {
     },
 
     onError: (error) => {
-      console.log(error);
       setError(error.message);
       toast.error(error.message);
     },
